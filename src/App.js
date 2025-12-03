@@ -399,10 +399,10 @@ const App = () => {
                 <div className="stat-number">100%</div>
                 <div className="stat-label">Services Support </div>
               </div>
-              <div className="stat-card">
+              {/* <div className="stat-card">
                 <div className="stat-number">1+</div>
                 <div className="stat-label">Years in Digital Services </div>
-              </div>
+              </div> */}
               <div className="stat-card">
                 <div className="stat-number">24/7</div>
                 <div className="stat-label">Support Available</div>
@@ -485,7 +485,7 @@ const App = () => {
                 </div>
                 <h3>Business Hours</h3>
                 <p>Sunday - Friday</p>
-                <p>9:00 AM - 6:00 PM</p>
+                <p>10:00 AM - 6:00 PM</p>
               </div>
 
               <div className="contact-card">
@@ -493,8 +493,7 @@ const App = () => {
                   <i className="fas fa-map-marker-alt"></i>
                 </div>
                 <h3>Location</h3>
-                <p>Kathmandu, Nepal</p>
-                <p>Available Worldwide</p>
+                <p>Lalitpur, Nepal</p>
               </div>
             </div>
             
@@ -507,15 +506,28 @@ const App = () => {
               <div className="form-group">
                 <input type="email" name="email" placeholder="Your Email" required />
               </div>
-              <div className="form-group">
-                <select name="service" required>
-                  <option value="">Select Service</option>
-                  <option value="web">Web Development</option>
-                  <option value="marketing">Social Media Marketing</option>
-                  <option value="consulting">Consulting</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
+                 <div className="form-group">
+                  <select name="service" required>
+                    <option value="">Select Service</option>
+                    <option value="web-development">Web Development</option>
+                    <option value="social-media-management">Social Media Management</option>
+                    <option value="video-production">Video Production & Reels</option>
+                    <option value="digital-marketing">Digital Marketing</option>
+                    <option value="social-media-marketing">Social Media Marketing</option>
+                    <option value="seo-optimization">SEO & Speed Optimization</option>
+                    <option value="graphics-design">Custom & Creative Graphics</option>
+                    <option value="content-writing">Content Writing & Scheduling</option>
+                    <option value="consulting">Business Consulting</option>
+                    <option value="it-support">IT Support</option>
+                    <option value="booking-system">Booking & Appointment System</option>
+                    <option value="ecommerce">E-commerce Website</option>
+                    <option value="healthcare">Healthcare Website</option>
+                    <option value="news-portal">News Portal & Business Protocol</option>
+                    <option value="educational">Educational/Consultancy Website</option>
+                    <option value="custom-website">Custom Website Development</option>
+                    <option value="other">Other (Please specify in message)</option>
+                  </select>
+                </div>
               <div className="form-group">
                 <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
               </div>
@@ -532,15 +544,18 @@ const App = () => {
         <div className="container">
           <div className="footer-content">
             <div className="footer-logo">
-              
-              <img 
-                src={logo} 
-                alt="Optiverse Logo" 
-                className="logo-image"
-              />
-              <div className="footer-tagline">
-                <h3>Optiverse I.T. Solution Pvt. Ltd.</h3>
-                <p>Digital success in tomorrow's world</p>
+              <div className="footer-logo-wrapper">
+                <div className="footer-logo-img-container">
+                  <img 
+                    src={logo} 
+                    alt="Optiverse Logo" 
+                    className="footer-logo-img"
+                  />
+                </div>
+                <div className="footer-tagline">
+                  <h3 className="footer-company-name">Optiverse I.T. Solution Pvt. Ltd.</h3>
+                  <p className="footer-slogan">Digital success in tomorrow's world</p>
+                </div>
               </div>
             </div>
             
@@ -550,7 +565,7 @@ const App = () => {
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#about">About Us</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
+                {/* <li><a href="#portfolio">Portfolio</a></li> */}
                 <li><a href="#contact">Contact</a></li>
               </ul>
             </div>
