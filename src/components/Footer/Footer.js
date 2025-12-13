@@ -45,7 +45,7 @@ const Footer = ({ theme, toggleTheme }) => (
             
             <div className="footer-contact">
               <h4>Contact Info</h4>
-              <p><i className="fas fa-envelope"></i> optiversesolution@gmail.com</p>
+              <p><i className="fas fa-envelope"></i> optiverseitsolution@gmail.com</p>
               <p><i className="fas fa-phone"></i> +977 9803713931</p>
               <div className="social-links">
                 <a href="#asd" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
