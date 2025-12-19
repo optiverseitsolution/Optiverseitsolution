@@ -16,8 +16,8 @@ const Contact = () => (
                   <i className="fas fa-envelope"></i>
                 </div>
                 <h3>Email</h3>
-                <p>optiversesolution@gmail.com</p>
-                <a href="mailto:optiversesolution@gmail.com" className="contact-link">Send Email</a>
+                <p>optiverseitsolution@gmail.com</p>
+                <a href="mailto:optiverseitsolution@gmail.com" className="contact-link">Send Email</a>
               </div>
               
               <div className="contact-card">
