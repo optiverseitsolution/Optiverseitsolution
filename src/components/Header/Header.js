@@ -57,7 +57,7 @@ const Header = ({ theme, toggleTheme }) => {
             <button className="theme-toggle" onClick={toggleTheme}>
               {theme === 'light' ? <i className="fas fa-moon"></i> : <i className="fas fa-sun"></i>}
             </button>
-            <a href="tel:+9779803713931" className="btn-call"><i className="fas fa-phone"></i>Call Now</a>
+            <a href="tel:+9779803713931" className="btn-call"><i className="fas fa-phone"></i><span>Call Now</span></a>
             <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
               <i className={`fas ${mobileMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>
             </button>
