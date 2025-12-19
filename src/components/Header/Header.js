@@ -65,26 +65,41 @@ const Header = ({ theme, toggleTheme }) => {
         </div>
 
         {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="mobile-nav open">
-            <ul className="mobile-nav-list">
-              <li><a href="#home" onClick={closeMobileMenu}>Home</a></li>
-              <li>
-                <button onClick={toggleServicesDropdown}>Services</button>
-                {servicesDropdownOpen && (
-                  <div className="mobile-dropdown-menu">
-                    <a href="#web-dev" onClick={closeMobileMenu}>Web Development</a>
-                    <a href="#social-media" onClick={closeMobileMenu}>Social Media Marketing</a>
-                    <a href="#consulting" onClick={closeMobileMenu}>Consulting</a>
-                    <a href="#support" onClick={closeMobileMenu}>IT Support</a>
-                  </div>
-                )}
-              </li>
-              <li><a href="#about" onClick={closeMobileMenu}>About Us</a></li>
-              <li><a href="#contact" onClick={closeMobileMenu}>Contact</a></li>
-            </ul>
-          </div>
-        )}
+         {mobileMenuOpen && (
+  <div className="mobile-nav open">
+    <ul className="mobile-nav-list">
+      <li className="mobile-nav-item">
+        <a className="mobile-nav-link" href="#home" onClick={closeMobileMenu}>Home</a>
+      </li>
+
+      <li className="mobile-nav-item">
+        <button
+          type="button"
+          className="mobile-nav-link"
+          onClick={toggleServicesDropdown}
+        >
+          <span>Services</span>
+          <i className={`fas ${servicesDropdownOpen ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
+        </button>
+
+        <div className={`mobile-dropdown-menu ${servicesDropdownOpen ? 'show' : ''}`}>
+          <a className="mobile-dropdown-item" href="#web-dev" onClick={closeMobileMenu}>Web Development</a>
+          <a className="mobile-dropdown-item" href="#social-media" onClick={closeMobileMenu}>Social Media Marketing</a>
+          <a className="mobile-dropdown-item" href="#consulting" onClick={closeMobileMenu}>Consulting</a>
+          <a className="mobile-dropdown-item" href="#support" onClick={closeMobileMenu}>IT Support</a>
+        </div>
+      </li>
+
+      <li className="mobile-nav-item">
+        <a className="mobile-nav-link" href="#about" onClick={closeMobileMenu}>About Us</a>
+      </li>
+
+      <li className="mobile-nav-item">
+        <a className="mobile-nav-link" href="#contact" onClick={closeMobileMenu}>Contact</a>
+      </li>
+    </ul>
+  </div>
+)}
       </div>
     </header>
   );
