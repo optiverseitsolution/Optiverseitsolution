@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Our Services – Optiverse IT Solution</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ══════════════════════════════════════════
+   LIGHT PAGE BACKGROUND — warm pearl white
+   with soft geometric SVG pattern overlay
+══════════════════════════════════════════ */
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+  background:#ffffff;
+  position:relative;
+}
+
+/* Very soft pastel gradient wash */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 90% 70% at 0% 0%,   rgba(186,230,255,0.35) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 100% 100%,rgba(221,214,254,0.28) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 55% at 55% 0%,   rgba(186,230,255,0.18) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 45% at 10% 85%,  rgba(199,210,254,0.2) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 40% at 90% 20%,  rgba(221,214,254,0.15) 0%, transparent 45%),
+    #ffffff;
+}
+
+/* Very faint dot-grid texture */
+body::after{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(circle, rgba(148,163,184,0.12) 1px, transparent 1px);
+  background-size:28px 28px;
+}
+
+/* Floating very soft blobs */
+.orb{position:fixed;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0;}
+.o1{width:520px;height:520px;background:radial-gradient(circle,rgba(186,230,255,0.6),transparent 65%);top:-180px;left:-140px;animation:f1 26s ease-in-out infinite alternate;}
+.o2{width:480px;height:480px;background:radial-gradient(circle,rgba(221,214,254,0.5),transparent 65%);bottom:-160px;right:-130px;animation:f2 30s ease-in-out infinite alternate;}
+.o3{width:360px;height:360px;background:radial-gradient(circle,rgba(186,230,255,0.35),transparent 65%);top:35%;left:30%;animation:f3 20s ease-in-out infinite alternate;}
+.o4{width:240px;height:240px;background:radial-gradient(circle,rgba(199,210,254,0.3),transparent 65%);top:5%;right:8%;animation:f4 23s ease-in-out infinite alternate;}
+.o5{width:200px;height:200px;background:radial-gradient(circle,rgba(186,230,255,0.32),transparent 65%);bottom:8%;left:12%;animation:f5 18s ease-in-out infinite alternate;}
+@keyframes f1{to{transform:translate(55px,45px) scale(1.1)}}
+@keyframes f2{to{transform:translate(-50px,-40px) scale(1.08)}}
+@keyframes f3{to{transform:translate(45px,-50px) scale(0.92)}}
+@keyframes f4{to{transform:translate(-25px,50px) scale(1.1)}}
+@keyframes f5{to{transform:translate(50px,-30px) scale(1.06)}}
+
+/* bg-lines: subtle diagonal stripes on page */
+.bg-lines{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.bg-lines::before{content:'';position:absolute;width:200%;height:200%;top:-50%;left:-50%;
+  background:repeating-linear-gradient(-55deg,transparent,transparent 90px,rgba(99,130,200,0.04) 90px,rgba(99,130,200,0.04) 91px);
+}
+
+/* No stars needed on light bg */
+.stars{display:none;}
+
+/* ══ WRAP ══ */
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:72px 24px 90px;}
+
+/* ══ HEADING — dark text on light bg ══ */
+.heading{text-align:center;margin-bottom:52px;}
+.heading h2{
+  font-size:clamp(2rem,4vw,3.4rem);font-weight:800;
+  background:linear-gradient(135deg,#1e3a5f 0%,#2563eb 60%,#7c3aed 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  line-height:1.1;letter-spacing:-.02em;margin-bottom:14px;
+}
+.heading p{font-size:.97rem;color:#64748b;max-width:480px;margin:0 auto;line-height:1.8;}
+
+/* ══════════════════════════════════════════
+   SERVICES CARD — rich dark slate
+   Deep charcoal with indigo-blue undertones
+══════════════════════════════════════════ */
+.layout{
+  display:grid;grid-template-columns:215px 1fr 240px;min-height:650px;
+  border-radius:22px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.06);
+  box-shadow:
+    0 0 0 1px rgba(99,130,255,.07),
+    0 8px 24px rgba(30,58,138,.12),
+    0 40px 80px rgba(15,23,42,.28);
+  background:#111827;
+}
+
+/* ══ LEFT NAV — animated interactive ══ */
+.lnav{display:flex;flex-direction:column;border-right:1px solid rgba(255,255,255,.07);background:linear-gradient(180deg,#0d1526 0%,#0f172a 100%);padding:12px 0;gap:4px;}
+.lbtn{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  padding:18px 10px 14px;font-family:inherit;font-size:.72rem;font-weight:700;
+  color:white;cursor:pointer;background:none;border:none;
+  border-left:3px solid transparent;text-align:center;
+  transition:all .3s cubic-bezier(.34,1.56,.64,1);
+  position:relative;width:100%;overflow:hidden;
+}
+.lbtn::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(105deg,transparent 40%,rgba(99,102,241,.1) 50%,transparent 60%);
+  transform:translateX(-100%);transition:transform .55s ease;pointer-events:none;
+}
+.lbtn:hover::before{transform:translateX(200%);}
+.lico{
+  width:44px;height:44px;border-radius:13px;
+  background:rgba(255,255,255,.05);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .3s cubic-bezier(.34,1.56,.64,1);
+  flex-shrink:0;position:relative;
+  box-shadow:0 2px 8px rgba(0,0,0,.25);
+}
+.lico svg{width:19px;height:19px;stroke:rgba(148,163,184,.35);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:all .3s ease;}
+.lname{font-size:.72rem;font-weight:700;line-height:1.3;pointer-events:none;transition:color .25s;}
+.lbtn:hover{color:rgba(255,255,255,.95);outline:none;transform:translateX(4px);}
+.lbtn:hover .lico{
+  background:linear-gradient(135deg,rgba(99,102,241,.32),rgba(139,92,246,.26));
+  transform:scale(1.14) rotate(-5deg);
+  box-shadow:0 8px 24px rgba(99,102,241,.38);
+}
+.lbtn:hover .lico svg{stroke:#c4b5fd;}
+.lbtn.on{color:#fff;border-left:3px solid #6366f1;background:linear-gradient(90deg,rgba(99,102,241,.18),rgba(99,102,241,.06));}
+.lbtn.on .lico{
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);
+  transform:scale(1.1);
+  box-shadow:0 6px 24px rgba(99,102,241,.55);
+}
+.lbtn.on .lico svg{stroke:#fff;}
+.lbtn.on::after{
+  content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);
+  width:3px;height:36px;background:linear-gradient(180deg,#818cf8,#a78bfa);
+  border-radius:3px 0 0 3px;
+}
+.lbtn.on .lico::after{
+  content:'';position:absolute;inset:-5px;border-radius:18px;
+  border:1.5px solid rgba(99,102,241,.45);
+  animation:pulseRing 2s ease-in-out infinite;
+}
+@keyframes pulseRing{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:.1;transform:scale(1.18)}}
+
+/* ══ CENTER — dark card body ══ */
+.center{overflow:hidden;border-right:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;position:relative;background:#111827;}
+.cpanel{display:none;flex-direction:column;height:100%;}
+.cpanel.on{display:flex;animation:sldin .38s cubic-bezier(.22,1,.36,1);}
+@keyframes sldin{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:translateX(0)}}
+.chero{position:relative;height:268px;flex-shrink:0;overflow:hidden;}
+.chero img{width:100%;height:100%;object-fit:cover;filter:brightness(.92) saturate(1.1);transition:transform .7s ease;}
+.chero:hover img{transform:scale(1.05);}
+.chero-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(17,24,39,.0) 0%,rgba(17,24,39,.55) 75%,rgba(17,24,39,.82) 100%);}
+.chero-bot{position:absolute;bottom:18px;left:20px;right:20px;display:flex;align-items:center;gap:12px;}
+.chico{width:42px;height:42px;border-radius:11px;flex-shrink:0;background:linear-gradient(135deg,#6366f1,#8b5cf6);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(99,102,241,.5);}
+.chico svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.chttl{font-size:1.15rem;font-weight:800;color:#fff;line-height:1.2;text-shadow:0 2px 10px rgba(0,0,0,.6);}
+.cbody{padding:22px 24px 24px;overflow-y:auto;flex:1;background:#111827;}
+.cbody::-webkit-scrollbar{width:3px;}
+.cbody::-webkit-scrollbar-thumb{background:rgba(99,102,241,.35);border-radius:3px;}
+.cdesc{font-size:.875rem;color:rgba(203,213,225,.65);line-height:1.95;margin-bottom:20px;}
+.hilist{display:flex;flex-direction:column;gap:9px;margin-bottom:18px;}
+.hirow{display:flex;align-items:flex-start;gap:11px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:13px 14px;transition:all .2s;}
+.hirow:hover{background:rgba(99,102,241,.1);border-color:rgba(99,102,241,.3);transform:translateX(4px);}
+.hiico{width:32px;height:32px;border-radius:8px;flex-shrink:0;background:linear-gradient(135deg,rgba(99,102,241,.25),rgba(139,92,246,.2));display:flex;align-items:center;justify-content:center;}
+.hiico svg{width:14px;height:14px;stroke:#a5b4fc;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.hitxt strong{display:block;font-size:.79rem;font-weight:700;color:#e2e8f0;margin-bottom:2px;}
+.hitxt span{font-size:.75rem;color:rgba(203,213,225,.5);line-height:1.55;}
+.offer{display:none;}
+
+/* ══ RIGHT SUBNAV — animated interactive ══ */
+.rnav{display:flex;flex-direction:column;background:linear-gradient(180deg,#0d1526 0%,#0f172a 100%);}
+.rhead{padding:16px 14px 10px;font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:rgba(148,163,184,.25);border-bottom:1px solid rgba(255,255,255,.05);}
+.rlist{display:none;flex-direction:column;padding:8px 0;}
+.rlist.on{display:flex;}
+.rbtn{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px 10px 14px;font-family:inherit;font-size:.73rem;font-weight:600;
+  color:white;cursor:pointer;background:none;border:none;
+  border-left:2px solid transparent;text-align:left;width:100%;
+  transition:all .28s cubic-bezier(.34,1.3,.64,1);
+  position:relative;overflow:hidden;
+}
+/* glide shine on hover */
+.rbtn::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(99,102,241,.07),transparent);
+  transform:translateX(-100%);transition:transform .4s ease;pointer-events:none;
+}
+.rbtn:hover::before{transform:translateX(100%);}
+.rico{
+  width:28px;height:28px;border-radius:8px;flex-shrink:0;
+  background:rgba(255,255,255,.04);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .28s cubic-bezier(.34,1.3,.64,1);pointer-events:none;
+}
+.rico svg{width:12px;height:12px;stroke:rgba(148,163,184,.28);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;transition:all .28s ease;}
+.rlbl{flex:1;line-height:1.35;pointer-events:none;transition:all .25s;}
+.rnum{
+  font-size:.58rem;font-weight:800;pointer-events:none;
+  color:rgba(148,163,184,.15);
+  transition:all .25s;
+  font-variant-numeric:tabular-nums;
+}
+.rbtn:hover{color:rgba(255,255,255,.88);outline:none;transform:translateX(5px);}
+.rbtn:hover .rico{
+  background:linear-gradient(135deg,rgba(99,102,241,.28),rgba(139,92,246,.22));
+  transform:scale(1.15) rotate(-6deg);
+  box-shadow:0 4px 14px rgba(99,102,241,.3);
+}
+.rbtn:hover .rico svg{stroke:#c4b5fd;transform:scale(1.1);}
+.rbtn:hover .rnum{color:rgba(99,102,241,.7);}
+.rbtn.on{
+  color:#fff;border-left:2px solid #6366f1;
+  background:linear-gradient(90deg,rgba(99,102,241,.16),rgba(99,102,241,.04));
+}
+.rbtn.on .rico{
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);
+  box-shadow:0 4px 16px rgba(99,102,241,.45);
+  transform:scale(1.08);
+}
+.rbtn.on .rico svg{stroke:#fff;}
+.rbtn.on .rnum{color:rgba(165,180,252,.6);}
+/* active item dot indicator */
+.rbtn.on::after{
+  content:'';position:absolute;right:10px;top:50%;transform:translateY(-50%);
+  width:5px;height:5px;border-radius:50%;
+  background:linear-gradient(135deg,#818cf8,#a78bfa);
+  box-shadow:0 0 8px rgba(99,102,241,.7);
+  animation:dotPulse 1.8s ease-in-out infinite;
+}
+@keyframes dotPulse{0%,100%{opacity:1;transform:translateY(-50%) scale(1)}50%{opacity:.4;transform:translateY(-50%) scale(1.5)}}
+
+@media(max-width:1020px){
+  .layout{grid-template-columns:1fr;}
+  .lnav{flex-direction:row;flex-wrap:wrap;border-right:none;border-bottom:1px solid rgba(255,255,255,.07);padding:8px;gap:2px;}
+  .lbtn{color:white;flex-direction:row;align-items:center;gap:8px;padding:9px 12px;border-left:none;border-bottom:2px solid transparent;width:auto;transform:none!important;}
+  .lbtn.on{border-left:none;border-bottom:2px solid #6366f1;}
+  .lbtn.on::after{display:none;}
+  .lbtn.on .lico::after{display:none;}
+  .lico{width:28px;height:28px;}
+  .center{border-right:none;border-bottom:1px solid rgba(255,255,255,.07);}
+  .rlist.on{flex-direction:row;flex-wrap:wrap;}
+  .rbtn{border-left:none;border-bottom:2px solid transparent;width:auto;transform:none!important;}
+  .rbtn.on{border-left:none;border-bottom:2px solid #6366f1;}
+  .rbtn.on::after{display:none;}
+}
+@media(max-width:600px){.wrap{padding:40px 12px 60px;}.chero{height:190px;}.cbody{padding:16px;}}
+</style>
+</head>
+<body>
+
+<div class="bg-lines"></div>
+<div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="orb o4"></div><div class="orb o5"></div>
+
+<div class="wrap">
+  <div class="heading">
+    <h2>Our Services</h2>
+    <p>We offer comprehensive digital solutions to help your business thrive — from stunning websites to powerful marketing strategies.</p>
+  </div>
+
+  <div class="layout">
+    <!-- LEFT NAV -->
+    <nav class="lnav" id="lnav">
+      <button class="lbtn on" data-svc="web"><div class="lico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><span class="lname">Web Development</span></button>
+      <button class="lbtn" data-svc="social"><div class="lico"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div><span class="lname">Social Media</span></button>
+      <button class="lbtn" data-svc="video"><div class="lico"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><span class="lname">Video Production</span></button>
+      <button class="lbtn" data-svc="mkt"><div class="lico"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><span class="lname">Digital Marketing</span></button>
+    </nav>
+
+    <!-- CENTER PANELS -->
+    <div class="center">
+      <div class="cpanel on" id="cp-web">
+        <div class="chero"><img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=900&q=80&fit=crop" alt=""/><div class="chero-ov"></div><div class="chero-bot"><div class="chico"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div class="chttl" id="ctitle-web">Custom Website Development</div></div></div>
+        <div class="cbody"><p class="cdesc" id="cdesc-web">Loading...</p><div class="hilist" id="chi-web"></div><div class="offer" id="coffer-web"></div></div>
+      </div>
+      <div class="cpanel" id="cp-social">
+        <div class="chero"><img src="https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=900&q=80&fit=crop" alt=""/><div class="chero-ov"></div><div class="chero-bot"><div class="chico"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div><div class="chttl" id="ctitle-social">Social Media Management</div></div></div>
+        <div class="cbody"><p class="cdesc" id="cdesc-social">Loading...</p><div class="hilist" id="chi-social"></div><div class="offer" id="coffer-social"></div></div>
+      </div>
+      <div class="cpanel" id="cp-video">
+        <div class="chero"><img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=900&q=80&fit=crop" alt=""/><div class="chero-ov"></div><div class="chero-bot"><div class="chico"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><div class="chttl" id="ctitle-video">Video Production</div></div></div>
+        <div class="cbody"><p class="cdesc" id="cdesc-video">Loading...</p><div class="hilist" id="chi-video"></div><div class="offer" id="coffer-video"></div></div>
+      </div>
+      <div class="cpanel" id="cp-mkt">
+        <div class="chero"><img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=900&q=80&fit=crop" alt=""/><div class="chero-ov"></div><div class="chero-bot"><div class="chico"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><div class="chttl" id="ctitle-mkt">Digital Marketing</div></div></div>
+        <div class="cbody"><p class="cdesc" id="cdesc-mkt">Loading...</p><div class="hilist" id="chi-mkt"></div><div class="offer" id="coffer-mkt"></div></div>
+      </div>
+    </div>
+
+    <!-- RIGHT SUBNAV -->
+    <div class="rnav" id="rnav">
+      <div class="rhead"></div>
+      <div class="rlist on" id="rl-web">
+        <button class="rbtn on" data-svc="web" data-idx="0"><div class="rico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><span class="rlbl">Custom Website</span><span class="rnum">01</span></button>
+        <button class="rbtn" data-svc="web" data-idx="1"><div class="rico"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/></svg></div><span class="rlbl">Educational Website</span><span class="rnum">02</span></button>
+        <button class="rbtn" data-svc="web" data-idx="2"><div class="rico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><span class="rlbl">Booking System</span><span class="rnum">03</span></button>
+        <button class="rbtn" data-svc="web" data-idx="3"><div class="rico"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div><span class="rlbl">E-Commerce Website</span><span class="rnum">04</span></button>
+        <button class="rbtn" data-svc="web" data-idx="4"><div class="rico"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><span class="rlbl">Health Care Website</span><span class="rnum">05</span></button>
+        <button class="rbtn" data-svc="web" data-idx="5"><div class="rico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><span class="rlbl">News Portal</span><span class="rnum">06</span></button>
+        <button class="rbtn" data-svc="web" data-idx="6"><div class="rico"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><span class="rlbl">Responsive Design</span><span class="rnum">07</span></button>
+        <button class="rbtn" data-svc="web" data-idx="7"><div class="rico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><span class="rlbl">SEO & Speed</span><span class="rnum">08</span></button>
+      </div>
+      <div class="rlist" id="rl-social">
+        <button class="rbtn on" data-svc="social" data-idx="0"><div class="rico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><span class="rlbl">Social Media Mgmt</span><span class="rnum">01</span></button>
+        <button class="rbtn" data-svc="social" data-idx="1"><div class="rico"><svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg></div><span class="rlbl">Brand Strategy</span><span class="rnum">02</span></button>
+        <button class="rbtn" data-svc="social" data-idx="2"><div class="rico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><span class="rlbl">Content Calendar</span><span class="rnum">03</span></button>
+        <button class="rbtn" data-svc="social" data-idx="3"><div class="rico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><span class="rlbl">Community Mgmt</span><span class="rnum">04</span></button>
+        <button class="rbtn" data-svc="social" data-idx="4"><div class="rico"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><span class="rlbl">Social Media Audit</span><span class="rnum">05</span></button>
+        <button class="rbtn" data-svc="social" data-idx="5"><div class="rico"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><span class="rlbl">Influencer Collabs</span><span class="rnum">06</span></button>
+      </div>
+      <div class="rlist" id="rl-video">
+        <button class="rbtn on" data-svc="video" data-idx="0"><div class="rico"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><span class="rlbl">Video & Reels</span><span class="rnum">01</span></button>
+        <button class="rbtn" data-svc="video" data-idx="1"><div class="rico"><svg viewBox="0 0 24 24"><circle cx="18" cy="12" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="8.22" y1="7.22" x2="15.78" y2="10.78"/><line x1="8.22" y1="16.78" x2="15.78" y2="13.22"/></svg></div><span class="rlbl">Video Editing</span><span class="rnum">02</span></button>
+        <button class="rbtn" data-svc="video" data-idx="2"><div class="rico"><svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg></div><span class="rlbl">Motion Graphics</span><span class="rnum">03</span></button>
+        <button class="rbtn" data-svc="video" data-idx="3"><div class="rico"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><span class="rlbl">Video Marketing</span><span class="rnum">04</span></button>
+        <button class="rbtn" data-svc="video" data-idx="4"><div class="rico"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div><span class="rlbl">Corporate Video</span><span class="rnum">05</span></button>
+        <button class="rbtn" data-svc="video" data-idx="5"><div class="rico"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><span class="rlbl">Product Demo</span><span class="rnum">06</span></button>
+      </div>
+      <div class="rlist" id="rl-mkt">
+        <button class="rbtn on" data-svc="mkt" data-idx="0"><div class="rico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div><span class="rlbl">Page Setup</span><span class="rnum">01</span></button>
+        <button class="rbtn" data-svc="mkt" data-idx="1"><div class="rico"><svg viewBox="0 0 24 24"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div><span class="rlbl">Meta Ads</span><span class="rnum">02</span></button>
+        <button class="rbtn" data-svc="mkt" data-idx="2"><div class="rico"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><span class="rlbl">Creative Graphics</span><span class="rnum">03</span></button>
+        <button class="rbtn" data-svc="mkt" data-idx="3"><div class="rico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></div><span class="rlbl">Content Writing</span><span class="rnum">04</span></button>
+        <button class="rbtn" data-svc="mkt" data-idx="4"><div class="rico"><svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg></div><span class="rlbl">Engaging Content</span><span class="rnum">05</span></button>
+        <button class="rbtn" data-svc="mkt" data-idx="5"><div class="rico"><svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg></div><span class="rlbl">Strategy & Planning</span><span class="rnum">06</span></button>
+        <button class="rbtn" data-svc="mkt" data-idx="6"><div class="rico"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div><span class="rlbl">Social Media Mgmt</span><span class="rnum">07</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── ALL SERVICE DATA ──
+var DATA = {
+  web:[
+    {img:'https://images.unsplash.com/photo-1547658719-da2b51169166?w=900&q=90',title:'Custom Website Development',desc:'A custom website is one of the most powerful investments your business can make in the digital era. Unlike generic templates that force your brand into a pre-made mold, a fully custom-built website is an original digital asset engineered from the ground up to reflect your unique identity, communicate your value proposition with absolute clarity, and guide visitors naturally toward conversion. Our process begins with a deep discovery phase — we study your industry, analyse competitors, understand your target audience, and align every design decision with your specific business objectives. Our senior developers then architect a robust, maintainable codebase using modern frameworks, ensuring your website is visually outstanding today and scalable for years to come.',hi:[['M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z','Bespoke UI/UX Design','Every element uniquely designed for your brand — custom layouts, animations, and visual identity that stands out and communicates trust instantly.'],['M2 3h20v14H2zM8 21h8M12 17v4','Scalable Architecture','Battle-tested modern frameworks with clean, maintainable code — easily scalable as your business grows with zero technical debt.'],['M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z','Enterprise-Grade Security','SSL encryption, firewall protection, regular security audits, and GDPR-compliant architecture protecting your data and users.']],offer:'20% OFF on all web development packages!'},
+    {img:'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=900&q=90',title:'Educational / Consultancy Website',desc:'The education and consultancy sector has undergone a radical digital transformation. Prospective students and clients now make critical decisions based almost entirely on your online presence — an outdated or confusing website actively damages your credibility and trust. We specialise in building sophisticated, conversion-optimised websites for educational institutions, coaching centres, universities, and professional consultancies. Our platforms feature intelligent course catalog systems with dynamic filtering, seamless inquiry and application forms, integrated student portals, automated admission workflows, faculty profile pages, testimonial showcases, and rich CMS tools that empower non-technical staff to manage all content without writing a single line of code.',hi:[['M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z','Dynamic Course Catalog','Comprehensive listing with advanced filtering by subject, duration, fee, and format — making it effortless for prospects to find their perfect program.'],['M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11','Smart Admission System','Multi-step forms that capture lead info, integrate with your CRM, send automated confirmation emails, and streamline your entire admissions workflow.'],['M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M12 7a4 4 0 100 8 4 4 0 000-8z','Student & Client Portals','Secure portals where students or clients can access materials, track progress, download certificates, and communicate with your team.']],offer:'20% OFF on all web development packages!'},
+    {img:'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&q=80',title:'Booking & Appointment System',desc:'In today\'s fast-paced world, customers expect to book appointments instantly — at any time, from any device, without ever picking up a phone. A powerful online booking system is a fundamental necessity for any service-based business that wants to reduce administrative overhead and deliver the seamless experience modern customers demand. We build sophisticated booking and appointment platforms featuring real-time availability calendars, automated email and SMS confirmations and reminders, secure integrated payment processing, multi-staff scheduling capabilities, client management dashboards with full appointment history, and comprehensive analytics revealing your busiest periods and most popular services.',hi:[['M12 2a10 10 0 100 20 10 10 0 000-20zM12 6v6l4 2','Real-Time Calendar Sync','Live availability management across all staff and locations, synced to Google Calendar and Outlook — zero double-bookings guaranteed.'],['M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0','Automated Reminders','Intelligent email and SMS sequences sent automatically before appointments, reducing no-show rates by up to 70%.'],['M1 4h22v16H1zM1 10h22','Integrated Payments','Secure online payment gateway supporting deposits, full prepayments, and refund management — PCI-compliant and built into your booking flow.']],offer:'20% OFF on all web development packages!'},
+    {img:'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=80',title:'E-Commerce Website',desc:'E-commerce has become the primary driver of revenue growth for millions of businesses worldwide. Building a successful online store requires far more than listing products on a webpage — it demands a meticulously engineered platform combining a compelling visual storefront, intuitive shopping experience, robust inventory management, secure payment processing, and intelligent marketing capabilities. We build powerful, enterprise-grade e-commerce platforms tailored precisely to your needs. Whether you\'re launching a new brand, scaling an existing retail operation, or building a complex multi-vendor marketplace, our team delivers an online store that consistently outperforms in sales conversions, average order value, and customer retention metrics.',hi:[['M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z','Advanced Product Management','Unlimited products with variants, bulk inventory management, automated low-stock alerts, and powerful category and filter systems.'],['M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z','Secure Multi-Gateway Checkout','PCI-DSS compliant checkout supporting credit/debit cards, digital wallets, bank transfer, and buy-now-pay-later with one-click repeat purchase.'],['M18 20V10M12 20V4M6 20v-6','Analytics & Marketing Tools','Abandoned cart recovery, upselling modules, discount engine, loyalty programs, and deep sales analytics to maximise revenue at every touchpoint.']],offer:'20% OFF on all web development packages!'},
+    {img:'https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=900&q=80',title:'Health Care Website',desc:'Healthcare is one of the most trust-dependent industries in the world — and patients begin their healthcare journey with an online search. The quality of your digital presence directly influences their choice of provider. A professional healthcare website does far more than list services; it establishes credibility, communicates commitment to patient care, and serves as a critical bridge between your medical expertise and the patients who need it most. Our healthcare websites feature doctor profiles with detailed specialisations, intuitive appointment booking integrated with clinical scheduling software, patient information portals, emergency contact information, telehealth integration, and multilingual support for diverse patient populations.',hi:[['M22 12h-4l-3 9L9 3l-3 9H2','Doctor & Staff Profiles','Comprehensive profiles with qualifications, specialisations, patient reviews, and personalised booking — building patient confidence from the first click.'],['M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07','Emergency & Contact Features','Prominent emergency hotlines, live chat integration, multi-department routing, and WhatsApp booking — patients can always reach you.'],['M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z','Privacy-First Architecture','HIPAA-conscious design with encrypted patient data handling, secure form submissions, and strict access controls protecting your practice.']],offer:'20% OFF on all web development packages!'},
+    {img:'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=900&q=80',title:'News Portal & Business Website',desc:'The ability to publish and distribute content quickly is a critical competitive advantage for media companies, news agencies, and corporate entities. A news portal is not merely a digital brochure — it is a living content platform capable of handling breaking news, high traffic surges, diverse multimedia content, complex categorisation, and multiple editorial workflows simultaneously. Our high-performance news portals are architectured on robust CMS foundations that empower editorial teams to publish and manage thousands of articles, videos, galleries, and infographics with ease — while ensuring the site remains blazingly fast and perfectly available even during major traffic spikes.',hi:[['M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z','Powerful CMS & Editorial Tools','Role-based workflows supporting writers, editors, and administrators — with drag-and-drop builders, multimedia management, and scheduled publishing.'],['M13 2L3 14h9l-1 8 10-12h-9l1-8z','High-Traffic Performance','CDN integration, advanced caching, lazy loading, and server-side optimisation ensuring your site loads instantly for thousands of concurrent visitors.'],['M11 3a8 8 0 100 16 8 8 0 000-16zM21 21l-4.35-4.35','News SEO & Discovery','Structured data markup, Google News sitemap, AMP support, and advanced SEO configuration to maximise visibility in Google Search and News.']],offer:'20% OFF on all web development packages!'},
+    {img:'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=900&q=80',title:'Responsive Web Development',desc:'With mobile devices now accounting for over 60% of all global web traffic, building a website that delivers a flawless experience across every screen size is an absolute commercial necessity. A website that performs poorly on mobile destroys your search engine rankings, decimates conversion rates, and sends hard-earned visitors directly to your competitors. Our responsive web development service ensures every website we build is engineered from the very first line of code with a mobile-first philosophy — designing and optimising for the smallest screens first, then progressively enhancing the experience for larger displays, resulting in websites that feel perfectly native on every device.',hi:[['M12 18H4a2 2 0 01-2-2V8a2 2 0 012-2h16a2 2 0 012 2v5','Mobile-First Engineering','Designed and coded mobile-first — ensuring perfect touch interactions, optimised tap targets, and seamless navigation on every smartphone.'],['M2 3h20v14H2zM8 21h8M12 17v4','Cross-Device Testing','Rigorous testing across 50+ device and browser combinations — pixel-perfect consistency for every visitor on Chrome, Safari, Firefox, and Edge.'],['M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01','Performance Under Any Condition','Adaptive image serving, progressive loading, and network-aware optimisation ensuring your site remains fast even on slow mobile connections.']],offer:'20% OFF on all web development packages!'},
+    {img:'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=900&q=80',title:'SEO & Speed Optimization',desc:'Your website\'s visibility on search engines and its loading speed are two of the most critical factors determining whether your online presence generates business or simply consumes hosting fees. Research consistently shows that 75% of users never scroll past the first page of Google results, and a mere one-second delay in page load time can reduce conversions by up to 20%. Investing in professional SEO and performance optimisation is one of the highest-return investments your business can make. Our comprehensive programme combines on-page SEO expertise, technical SEO auditing, Core Web Vitals optimisation, strategic keyword research, authority link-building, and performance engineering to transform your website into a consistent, compounding lead-generation machine.',hi:[['M10 15l-3-3 3-3M14 9l3 3-3 3','First-Page Google Rankings','Comprehensive on-page optimisation, technical SEO fixes, schema markup, and content planning to achieve and maintain first-page rankings for your target keywords.'],['M22 12h-4l-3 9L9 3l-3 9H2','Core Web Vitals Mastery','Expert optimisation of LCP, FID, and CLS — achieving Google\'s green scores that directly boost search rankings and user satisfaction metrics.'],['M22 7L13.5 15.5 8.5 10.5 2 17M16 7h6v6','Sustained Organic Growth','Long-term SEO strategies including content clusters, internal linking architecture, and authority backlink acquisition that compound in value month after month.']],offer:'20% OFF on all web development packages!'}
+  ],
+  social:[
+    {img:'https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=900&q=80',title:'Social Media Management',desc:'Comprehensive social media management is the backbone of a thriving digital brand. In today\'s hyper-competitive online landscape, inconsistent posting or neglected community interactions can rapidly erode the trust and loyalty you have worked hard to build. Our Social Media Management service delivers a fully managed, end-to-end solution handling every aspect of your social presence across Facebook, Instagram, LinkedIn, Twitter/X, TikTok, and YouTube. Our dedicated social media managers act as an extension of your marketing team — developing content calendars, crafting compelling copy, designing eye-catching visuals, monitoring brand mentions, responding to your community, and analysing performance metrics so your brand remains impossible to ignore.',hi:[['M3 4h18v16H3zM16 2v4M8 2v4M3 10h18','Strategic Content Calendar','Meticulously planned 30-day content calendars aligned with your objectives, seasonal opportunities, and campaigns for maximum daily engagement.'],['M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z','Real-Time Engagement','Dedicated managers responding to every comment, DM, mention, and review within hours — building authentic relationships and humanising your brand.'],['M18 20V10M12 20V4M6 20v-6','Performance Optimisation','Continuous A/B testing of content formats, posting times, and hashtag strategies to systematically improve reach and follower growth month-over-month.']],offer:'20% OFF on all social media management packages!'},
+    {img:'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=900&q=80',title:'Brand Strategy Development',desc:'Brand strategy is the invisible architecture that gives your business its voice, personality, and power to connect with people on an emotional level. Without a clear, cohesive brand strategy, even the most talented marketing efforts will lack the resonance needed to cut through an increasingly crowded marketplace. Our Brand Strategy Development service is a comprehensive, research-driven process that takes you from brand confusion to brand clarity — defining every essential element of who you are, what you stand for, who you serve, and why customers should choose you. We conduct workshops, competitive landscape analysis, audience persona research, and positioning exercises to develop a complete, actionable brand system.',hi:[['M12 2a10 10 0 100 20 10 10 0 000-20zM2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z','Brand Positioning','Rigorous competitive analysis and strategic positioning identifying your unique market space and articulating a compelling reason-to-choose-you.'],['M12 2a10 10 0 100 20 10 10 0 000-20z','Visual Identity System','Complete brand identity system covering logo, colour palette with psychological rationale, typography system, and comprehensive brand guidelines.'],['M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z','Brand Playbook & Training','Detailed brand playbook with team training ensuring every member communicates your brand with consistency and conviction.']],offer:'20% OFF on all social media management packages!'},
+    {img:'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=900&q=80',title:'Content Calendar Planning',desc:'Behind every social media account that consistently captivates its audience lies one fundamental tool — a strategic, well-researched, and meticulously planned content calendar. Without it, social media management becomes reactive, inconsistent, and strategically incoherent. Our Content Calendar Planning service transforms your social media from ad-hoc broadcasting into a precision content marketing machine. We begin with a deep strategic brief — understanding your business goals, audience personas, key messages, seasonal opportunities, competitor content analysis, and platform-specific best practices — then construct a comprehensive monthly or quarterly calendar mapping every post, story, reel, and campaign across all social channels.',hi:[['M3 4h18v16H3zM16 2v4M8 2v4M3 10h18','Multi-Format Content Mix','Strategic balance of educational posts, promotional content, behind-the-scenes stories, user-generated content, and thought leadership for diverse engagement.'],['M12 2a10 10 0 100 20 10 10 0 000-20zM12 6v6l4 2','Algorithm-Optimised Timing','Platform-specific scheduling based on deep audience analytics — posting at the precise times when your audience is most active and likely to engage.'],['M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11','Approval & Review Workflow','Structured content review and approval process ensuring every piece is signed off before publication — maintaining quality control at scale.']],offer:'20% OFF on all social media management packages!'},
+    {img:'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&q=80',title:'Community Management',desc:'A thriving online community is one of the most valuable and defensible assets a brand can build in the digital age — yet also one of the most demanding to cultivate and sustain. True community management goes far beyond responding to comments; it requires a genuine commitment to building authentic human connections at scale and fostering a culture of belonging around your brand. Our dedicated brand-trained professionals proactively engage with your audience, respond to every interaction with brand-consistent voice and genuine care, monitor your brand across all platforms in real-time, professionally handle negative feedback with empathy, and run community-building initiatives that transform followers into passionate brand champions.',hi:[['M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z','Authentic Relationship Building','Community managers who genuinely invest in your audience — creating real conversations and fostering belonging that turns followers into advocates.'],['M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z','Brand Reputation Protection','Real-time monitoring across all platforms — professionally handling negative feedback and defusing potential crises before they escalate.'],['M12 2a10 10 0 100 20 10 10 0 000-20zM12 6v6l4 2','Loyalty & Advocacy Programs','Community engagement initiatives, UGC campaigns, and ambassador programs designed to recognise and reward your most engaged followers.']],offer:'20% OFF on all social media management packages!'},
+    {img:'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80',title:'Social Media Audit & Analysis',desc:'You cannot optimise what you cannot measure — and you cannot measure what you do not understand. A comprehensive Social Media Audit is the essential first step for any business serious about improving performance, because it replaces guesswork with evidence and confusion with clarity. Our audit delivers a forensically detailed examination of your entire social media presence — evaluating every dimension to identify exactly what is working, what is failing, and where the greatest opportunities lie. We analyse all major platforms — content quality, posting frequency, engagement benchmarks, competitor performance, hashtag effectiveness, advertising historical performance, and brand sentiment — producing a comprehensive, prioritised action plan.',hi:[['M11 3a8 8 0 100 16 8 8 0 000-16zM21 21l-4.35-4.35','360 Performance Analysis','Forensic examination of every content format, posting pattern, and platform metric — identifying precisely which activities drive value and which consume budget.'],['M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 100 8 4 4 0 000-8z','Competitor Benchmarking','Detailed competitive intelligence comparing your performance against top 5 competitors — revealing actionable gaps and opportunities.'],['M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8zM14 2v6h6','Prioritised Action Roadmap','Clear, actionable recommendations ranked by impact and effort — giving you a practical 90-day improvement roadmap to elevate social performance.']],offer:'20% OFF on all social media management packages!'},
+    {img:'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&q=80',title:'Influencer Collaborations',desc:'Influencer marketing has evolved from a trendy experiment into one of the most powerful and ROI-efficient channels available to modern brands. Consumers today are increasingly sceptical of traditional advertising, but they trust the authentic recommendations of creators they follow and admire. A well-executed influencer collaboration transfers the creator\'s credibility directly to your products — creating a powerful social proof mechanism that drives dramatic spikes in brand awareness, engagement, and sales. Our service manages the entire process from creator discovery and vetting through to contract negotiation, campaign briefing, content approval, performance tracking, and post-campaign analysis.',hi:[['M22 11.08V12a10 10 0 11-5.93-9.14M22 4L12 14.01l-3-3','Precision Creator Matching','AI-assisted and human-curated influencer identification based on audience demographics, engagement authenticity, and brand alignment.'],['M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8zM14 2v6h6M16 13H8M16 17H8','End-to-End Campaign Mgmt','Complete coordination including contract negotiation, creative briefing, content review, posting schedule management, and compliance monitoring.'],['M22 7L13.5 15.5 8.5 10.5 2 17M16 7h6v6','ROI Measurement','Comprehensive tracking using discount codes, UTM parameters, and platform analytics — providing clear ROI calculation for every collaboration.']],offer:'20% OFF on all social media management packages!'}
+  ],
+  video:[
+    {img:'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=900&q=80',title:'Video Production & Reels Creation',desc:'Video is the dominant content format of our time — accounting for over 82% of all internet traffic and generating 1200% more shares than text and image content combined. For businesses seeking to capture attention, build brand awareness, and convert audiences into customers, video is the single most powerful content investment available. Our Video Production and Reels Creation service delivers full-spectrum, cinematic-quality video content tailored precisely to your brand and goals. From the initial creative concept and scriptwriting all the way through to professional filming, expert editing, sound design, colour grading, motion graphics, and final delivery across all required formats and platforms — every frame handled with obsessive attention to detail.',hi:[['M23 7l-7 5 7 5V7zM1 5h15v14H1z','4K Cinematic Production','Professional filming with cinema cameras, stabilised gimbal movement, expert lighting, and external audio recording delivering broadcast-quality visual content.'],['M14.5 17.5L3 6V3h3l11.5 11.5M13 19l6-6 1.5 1.5-6 6zM19 21l2-2','Expert Post-Production','Advanced colour grading, dynamic editing, professional sound design with licensed music, animated lower thirds, and polished graphic treatments.'],['M2 2h20v20H2zM2 7h20M7 2v20','Platform-Native Reels','Short-form content engineered for Instagram, TikTok, and YouTube Shorts — hook-led structure, trending audio selection, and subtitle overlays for maximum reach.']],offer:'20% OFF on all video production packages for 6 months!'},
+    {img:'https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=900&q=90',title:'Professional Video Editing',desc:'Great video editing is the invisible art that separates amateur content from professional, memorable storytelling. Without expert editing — compelling narrative structure, precise timing, professional colour grading, crisp audio mixing, and polished graphic treatments — even the most valuable footage will fail to engage viewers or communicate your message. Our Professional Video Editing service transforms your raw footage into polished, high-impact video assets that capture attention, hold viewers to the final frame, and deliver your message with clarity and emotion. Our senior editors bring years of experience across corporate video, social content, documentary, commercial advertising, and event filming.',hi:[['M12 2a10 10 0 100 20 10 10 0 000-20zM12 8v4l3 3','Cinematic Color Grading','Professional DaVinci Resolve colour grading establishing a consistent, cinematic look — correcting exposure while creating a distinctive signature visual style.'],['M9 18V5l12-2v13M6 18a3 3 0 100 6 3 3 0 000-6zM18 16a3 3 0 100 6 3 3 0 000-6z','Immersive Sound Design','Professional audio mixing, noise reduction, dialogue enhancement, licensed music synchronisation, and sound effects for an emotionally engaging experience.'],['M12 2a10 10 0 100 20 10 10 0 000-20zM12 6v6l4 2','Fast Turnaround','Streamlined editing workflows ensuring fast delivery — typically 3-5 business days for standard edits — without sacrificing quality your brand deserves.']],offer:'20% OFF on all video production packages for 6 months!'},
+    {img:'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=900&q=80',title:'Motion Graphics & Animations',desc:'In a world saturated with static imagery and talking-head videos, motion graphics and animations represent one of the most powerful tools for capturing attention, simplifying complex ideas, and creating brand experiences that are genuinely unforgettable. From a mesmerising animated logo reveal that instantly communicates premium brand quality, to a sophisticated infographic animation transforming dense data into an engaging visual story, to a complete brand motion identity system — motion graphics are the secret weapon of the world\'s most impactful brands. Our team combines artistic creativity with technical mastery in Adobe After Effects, Cinema 4D, and Lottie.',hi:[['M2 3h20v14H2zM8 21h8M12 17v4','Brand Motion Identity','Comprehensive motion system — animated logo intros, lower third templates, title cards, and transition graphics creating a cohesive premium visual language.'],['M5 3l14 9-14 9V3z','2D & 3D Animation','From 2D character animations and infographic motion graphics to photorealistic 3D product visualisations — we animate ideas that cannot be captured with a camera.'],['M12 2a10 10 0 100 20 10 10 0 000-20zM10 8l6 4-6 4V8z','Explainer & Training Videos','Animated explainer videos simplifying complex products into clear, engaging visual stories — perfect for landing pages, sales pitches, and onboarding.']],offer:'20% OFF on all video production packages for 6 months!'},
+    {img:'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80',title:'Video Marketing Strategy',desc:'Creating outstanding video content is only half the battle — without a sophisticated, data-driven video marketing strategy to distribute and optimise that content, even the most brilliantly produced videos will fail to reach their intended audience or achieve their commercial objectives. Video marketing strategy aligns creative decisions with business goals, platform algorithms, audience behaviour, and performance data — ensuring every video your brand produces works as hard as possible to maximise reach, engagement, lead generation, and revenue. Our service provides a comprehensive, evidence-based roadmap for building a dominant video presence across YouTube, Instagram, TikTok, LinkedIn, Facebook, and your own website.',hi:[['M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z','YouTube Channel Growth','Complete YouTube SEO — keyword research, title optimisation, custom thumbnails, and subscriber growth strategies to build an owned audience.'],['M12 2a10 10 0 100 20 10 10 0 000-20zM12 6a6 6 0 100 12 6 6 0 000-12zM12 10a2 2 0 100 4 2 2 0 000-4z','Paid Video Advertising','High-ROI video ad campaigns across YouTube, Instagram, Facebook, and TikTok — crafted for specific funnel stages from awareness to conversion.'],['M18 20V10M12 20V4M6 20v-6','Video SEO & Analytics','Comprehensive video SEO and performance tracking — analysing watch time, retention, CTR, and conversion attribution to continuously refine your strategy.']],offer:'20% OFF on all video production packages for 6 months!'},
+    {img:'https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80',title:'Corporate Video Production',desc:'Corporate video is the most powerful tool for shaping how the world perceives your organisation — communicating your vision, demonstrating expertise, showcasing your culture, and building the trust and credibility that drives business relationships and talent acquisition. In a business environment where first impressions are increasingly formed digitally before any human contact occurs, a library of professional corporate videos is no longer a luxury; it is an essential business asset that works tirelessly to represent your organisation at the highest possible level. Our Corporate Video Production delivers the full spectrum — company profile films, executive interviews, product launch videos, employee testimonials, and investor presentations.',hi:[['M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z','Company Profile Films','Cinematic flagship brand films authentically capturing your organisation\'s purpose, culture, capabilities, and vision — compelling stakeholders, clients, and talent.'],['M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3zM19 10v2a7 7 0 01-14 0v-2','Executive Thought Leadership','Professionally produced interview series and keynotes positioning your leadership team as credible, authoritative industry voices.'],['M3 3h18v18H3zM3 9h18M9 21V9','Investor & Stakeholder Videos','Polished investor presentation videos presenting your growth strategy and market opportunity with confidence and professionalism.']],offer:'20% OFF on all video production packages for 6 months!'},
+    {img:'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=80',title:'Product Demo Videos',desc:'A product demonstration video is quite possibly the single highest-converting piece of marketing content your business can produce. Research consistently shows that customers are 85% more likely to purchase after watching a demonstration video — because seeing a product in action removes the uncertainty and risk that typically inhibit purchase decisions. An exceptional product demo does not just show your product; it tells a compelling story beginning with your customer\'s pain point, illustrates how your product provides the perfect solution, demonstrates key features in action, and concludes with a clear and compelling call to action. We create high-converting demonstrations for physical products, software, SaaS platforms, and mobile apps.',hi:[['M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8zM12 9a3 3 0 100 6 3 3 0 000-6z','Feature Showcase & Storytelling','Strategically structured demonstrations leading with the customer\'s problem before revealing your product as the solution — building desire through benefit-led presentation.'],['M2 3h20v14H2zM8 21h8M12 17v4','Screen Recording & UI Walkthroughs','Crystal-clear software and app demonstrations with professional screen recording, cursor highlighting, zoom animations, and step-by-step UI walkthroughs.'],['M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0','Sales & Landing Page Integration','Demo videos optimised for product landing pages, e-commerce listings, and sales decks — where video presence alone can increase conversions by up to 80%.']],offer:'20% OFF on all video production packages for 6 months!'}
+  ],
+  mkt:[
+    {img:'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=900&q=80',title:'Page Setup and Handling',desc:'Your social media pages and business profiles are often the very first point of contact between potential customers and your brand — and first impressions are formed in milliseconds. An incomplete, unprofessional, or poorly optimised business page does not just fail to attract new customers; it actively repels them, signalling a lack of professionalism that immediately undermines trust. Our Page Setup and Handling service ensures every business page across Facebook, Instagram, LinkedIn, Google Business Profile, YouTube, and TikTok is impeccably set up, comprehensively optimised, and consistently maintained to project maximum professionalism and credibility.',hi:[['M12 2a10 10 0 100 20 10 10 0 000-20zM12 6v6l4 2','Complete Platform Optimisation','Platform-specific profile optimisation for every social channel — keyword-rich bios, strategic link placement, call-to-action buttons, and highlight covers.'],['M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11','Business Verification Support','Expert guidance and hands-on assistance with verification applications across Facebook, Instagram, Google Business, and LinkedIn.'],['M1 4h22v16H1zM1 10h22','Ongoing Profile Management','Regular profile audits ensuring your business information, service listings, contact details, and visual elements remain accurate and optimised.']],offer:'20% OFF on all digital marketing packages!'},
+    {img:'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=900&q=80',title:'Advertisement & Meta Ads Campaign',desc:'Paid advertising on Meta\'s platforms — Facebook and Instagram — represents one of the most powerful and cost-efficient customer acquisition channels available to businesses of any size. With a combined user base of over 4 billion monthly active users and sophisticated targeting capabilities, Meta advertising — when managed expertly — can transform your customer acquisition economics and drive predictable, scalable revenue growth. Our Advertisement and Meta Ads Campaign management is led by certified Meta advertising specialists with hundreds of successful campaign launches across diverse industries. We manage the complete advertising lifecycle — from audience research through to creative production, campaign buildout, pixel tracking, A/B testing, continuous optimisation, and detailed performance reporting.',hi:[['M12 2a10 10 0 100 20 10 10 0 000-20zM12 6a6 6 0 100 12 6 6 0 000-12zM12 10a2 2 0 100 4 2 2 0 000-4z','Laser-Precise Targeting','Multi-layered audience strategy combining interest targeting, behavioural signals, custom audiences, lookalike audiences, and retargeting funnels.'],['M3 3h18v18H3zM3 9h18M9 21V9','High-Converting Ad Creative','Professionally designed static images, carousel ads, video ads, and story ads with conversion-optimised copy and compelling calls-to-action.'],['M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6','ROAS Maximisation','Continuous optimisation including bid strategy management, audience refinement, creative fatigue monitoring, and budget reallocation to top performers.']],offer:'20% OFF on all digital marketing packages!'},
+    {img:'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&q=80',title:'Custom and Creative Graphics',desc:'In the visual economy of social media and digital advertising, the quality and distinctiveness of your graphic content directly reflects your brand\'s professionalism and value. Audiences scroll through hundreds of images every day — and only the most visually arresting, brand-consistent, and strategically designed graphics have the power to stop that scroll and communicate your message instantly. Our Custom and Creative Graphics service provides a comprehensive, on-demand graphic design solution tailored to the demands of social media marketing, digital advertising, and brand communication. Our brand designers create social media post graphics, animated GIFs, Instagram Story designs, advertising creatives, promotional banners, product showcase graphics, and infographics.',hi:[['M12 2a10 10 0 100 20 10 10 0 000-20z','Brand-Consistent Visuals','Every graphic designed within your brand guidelines — consistent colour palette, typography, and visual language creating instant brand recognition everywhere.'],['M13 2L3 14h9l-1 8 10-12h-9l1-8z','Rapid Creative Production','High-volume graphic production with fast turnaround — typically same-day to 24-hour delivery for standard social graphics keeping your content calendar full.'],['M22 7L13.5 15.5 8.5 10.5 2 17M16 7h6v6','Conversion-Optimised Creatives','Ad graphics engineered with conversion psychology — strategic visual hierarchy, colour contrast, and urgency triggers to maximise click-through rates.']],offer:'20% OFF on all digital marketing packages!'},
+    {img:'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=900&q=80',title:'Content Writing and Scheduling',desc:'Words are the foundation of all digital communication — and the quality, strategic alignment, and consistency of the written content your brand produces determines how your audience perceives you, trusts you, and ultimately chooses to do business with you. Professional content writing is not simply about producing grammatically correct text; it is the sophisticated craft of understanding your audience\'s specific needs, desires, and pain points, then communicating your brand\'s message in a way that resonates authentically, demonstrates genuine expertise, builds trust progressively, and motivates specific actions. Our service provides a complete, professionally managed content production and publishing solution.',hi:[['M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z','Platform-Native Copywriting','Expertly crafted captions and calls-to-action written specifically for each platform — from punchy Instagram captions to professional LinkedIn articles.'],['M12 2a10 10 0 100 20 10 10 0 000-20zM12 6v6l4 2','Automated Scheduling','Professional scheduling using advanced platforms — publishing at algorithm-optimised times ensuring maximum organic reach without manual daily effort.'],['M11 3a8 8 0 100 16 8 8 0 000-16zM21 21l-4.35-4.35','SEO-Optimised Content','Research-driven blog articles and website copy strategically optimised with target keywords — driving organic search traffic that converts to leads.']],offer:'20% OFF on all digital marketing packages!'},
+    {img:'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=900&q=80',title:'Engaging Content Creation',desc:'In the attention economy, engagement is the currency that determines whether your content achieves its business objectives or disappears into the infinite scroll. Creating genuinely engaging content — content that sparks conversations, provokes shares, saves, and comments, builds emotional connections, and creates memorable brand experiences — requires a rare combination of creative intelligence, deep audience understanding, cultural awareness, and strategic commercial thinking. Our Engaging Content Creation service is built around creative specialists who live and breathe digital culture — tracking emerging trends, understanding platform algorithm changes in real-time, and channelling this intelligence into irresistibly shareable content.',hi:[['M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7l3-7z','Trend-Driven Viral Content','Real-time trend monitoring and rapid creative response — leveraging emerging audio trends, meme formats, and cultural moments for maximum organic discovery.'],['M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 100 8 4 4 0 000-8z','Interactive Community Content','Polls, quizzes, challenges, giveaways, and collaborative content maximising comments, shares, and saves — the engagement signals driving distribution.'],['M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z','Emotional Storytelling','Long-form narrative content building deep emotional connections — customer success stories, behind-the-scenes documentaries, and founder journey content.']],offer:'20% OFF on all digital marketing packages!'},
+    {img:'https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?w=900&q=80',title:'Social Media Strategy & Planning',desc:'Strategy is the difference between social media that costs your business money and social media that makes your business money. Without a clear, commercially grounded social media strategy, even the most creative and consistent content efforts will fail to translate into meaningful business outcomes — because activity without strategic direction is simply noise. Our Social Media Strategy and Planning service provides the intelligence, clarity, and actionable roadmap needed to transform your social media channels from cost centres into powerful, scalable revenue drivers. Our strategic process begins with audience persona development, platform-specific competitive analysis, brand positioning review, historical performance audit, and business goal alignment workshops.',hi:[['M12 2a10 10 0 100 20 10 10 0 000-20zM12 8l4 4-4 4M8 12h8','Full-Funnel Channel Strategy','Comprehensive platform strategy covering the entire customer journey — from top-of-funnel awareness through to bottom-funnel conversion and post-purchase advocacy.'],['M3 4h18v16H3zM16 2v4M8 2v4M3 10h18','Quarterly Planning & Roadmapping','Detailed quarterly content and campaign planning with monthly themes, seasonal opportunities, and weekly priorities — providing total clarity and direction.'],['M18 20V10M12 20V4M6 20v-6','KPI Framework & Reporting','Clearly defined, commercially meaningful KPIs aligned with your business goals — with comprehensive monthly dashboards translating metrics into business impact.']],offer:''},
+    {img:'https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=900&q=80',title:'Social Media Management',desc:'Comprehensive social media management is the engine that powers a thriving digital brand presence. In today\'s hyper-competitive landscape, inconsistent posting or neglected community interactions can rapidly erode the trust and loyalty you have worked hard to build. Our Social Media Management service delivers a fully managed, end-to-end solution handling every aspect of your social presence across Facebook, Instagram, LinkedIn, TikTok, and YouTube. Our dedicated social media managers act as a true extension of your marketing team — crafting compelling content, designing eye-catching visuals, scheduling with precision, monitoring brand mentions, responding to your community, and delivering in-depth performance analytics that fuel continuous growth and measurable ROI.',hi:[['M3 4h18v16H3zM16 2v4M8 2v4M3 10h18','Strategic Content Calendar','Meticulously planned 30-day content calendars aligned with your business objectives, seasonal campaigns, and platform best practices for maximum daily engagement.'],['M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z','Real-Time Community Engagement','Dedicated managers responding to every comment, DM, mention, and review — building authentic relationships and humanising your brand across all channels.'],['M18 20V10M12 20V4M6 20v-6','Data-Driven Growth Optimisation','Continuous A/B testing of content formats, posting times, and hashtag strategies to systematically improve organic reach and follower growth month-over-month.']],offer:''}
+  ]
+};
+
+// ── RENDER CENTER CONTENT ──
+function render(svc, idx) {
+  var d = DATA[svc][idx];
+  if (!d) return;
+  // title
+  var titleEl = document.getElementById('ctitle-' + svc);
+  if (titleEl) titleEl.textContent = d.title;
+  // image
+  var imgEl = document.querySelector('#cp-' + svc + ' .chero img');
+  if (imgEl) imgEl.src = d.img;
+  // desc
+  var descEl = document.getElementById('cdesc-' + svc);
+  if (descEl) descEl.textContent = d.desc;
+  // highlights
+  var html = '';
+  for (var i = 0; i < d.hi.length; i++) {
+    html += '<div class="hirow">'
+      + '<div class="hiico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="' + d.hi[i][0] + '"/></svg></div>'
+      + '<div class="hitxt"><strong>' + d.hi[i][1] + '</strong><span>' + d.hi[i][2] + '</span></div>'
+      + '</div>';
+  }
+  var hiEl = document.getElementById('chi-' + svc);
+  if (hiEl) hiEl.innerHTML = html;
+  // replay animation
+  var panel = document.getElementById('cp-' + svc);
+  if (panel) {
+    panel.style.animation = 'none';
+    void panel.offsetWidth;
+    panel.style.animation = '';
+  }
+}
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded', function() {
+  render('web', 0);
+  render('social', 0);
+  render('video', 0);
+  render('mkt', 0);
+
+// ── LEFT NAV ──
+document.getElementById('lnav').addEventListener('click', function(e) {
+  var btn = e.target;
+  // walk up to find .lbtn
+  while (btn && btn !== this) {
+    if (btn.classList && btn.classList.contains('lbtn')) break;
+    btn = btn.parentNode;
+  }
+  if (!btn || !btn.classList.contains('lbtn')) return;
+  var svc = btn.getAttribute('data-svc');
+  if (!svc) return;
+  // deactivate all left buttons
+  var lbtns = this.querySelectorAll('.lbtn');
+  for (var i = 0; i < lbtns.length; i++) lbtns[i].classList.remove('on');
+  // deactivate all center panels
+  var panels = document.querySelectorAll('.cpanel');
+  for (var i = 0; i < panels.length; i++) panels[i].classList.remove('on');
+  // deactivate all right lists
+  var rlists = document.querySelectorAll('.rlist');
+  for (var i = 0; i < rlists.length; i++) rlists[i].classList.remove('on');
+  // activate chosen
+  btn.classList.add('on');
+  document.getElementById('cp-' + svc).classList.add('on');
+  document.getElementById('rl-' + svc).classList.add('on');
+  // reset sub-nav to first item
+  var rbtns = document.querySelectorAll('#rl-' + svc + ' .rbtn');
+  for (var i = 0; i < rbtns.length; i++) rbtns[i].classList.toggle('on', i === 0);
+  // render first item
+  render(svc, 0);
+});
+
+// ── RIGHT SUB-NAV: event delegation on rnav container ──
+document.getElementById('rnav').addEventListener('click', function(e) {
+  var btn = e.target;
+  // walk up to find .rbtn
+  while (btn && btn !== this) {
+    if (btn.classList && btn.classList.contains('rbtn')) break;
+    btn = btn.parentNode;
+  }
+  if (!btn || !btn.classList.contains('rbtn')) return;
+  var svc = btn.getAttribute('data-svc');
+  var idx = parseInt(btn.getAttribute('data-idx'), 10);
+  if (!svc || isNaN(idx)) return;
+  // deactivate siblings in same list
+  var siblings = document.querySelectorAll('#rl-' + svc + ' .rbtn');
+  for (var i = 0; i < siblings.length; i++) siblings[i].classList.remove('on');
+  btn.classList.add('on');
+  render(svc, idx);
+});
+
+}); // end DOMContentLoaded
+</script>
+</body>
+</html>
