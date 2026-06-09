@@ -1,16 +1,20 @@
 import { MapPin, Mail, Phone, Clock, ChevronDown } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 
 export default function ContactSection() {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState("Select a service...");
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const options = ["Web Development", "Digital Marketing", "Branding"];
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        event.target instanceof Node &&
+        !dropdownRef.current.contains(event.target)
+      ) {
         setOpen(false);
       }
     };
@@ -21,12 +25,12 @@ export default function ContactSection() {
     };
   }, []);
 
-  const handleSelect = (option) => {
+  const handleSelect = (option: string) => {
     setSelected(option);
     setOpen(false);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
