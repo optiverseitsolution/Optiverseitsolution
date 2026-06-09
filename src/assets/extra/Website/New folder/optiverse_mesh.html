@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Optiverse IT Solution Pvt. Ltd. | Software &amp; Digital Marketing – Nepal</title>
+<meta name="description" content="Optiverse IT Solution Pvt. Ltd. – Full-service software development and digital marketing company based in Kathmandu, Nepal."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --brand:#16A34A;--brand-l:#22C55E;--brand-d:#15803D;
+  --brand-pale:#F0FDF4;--brand-mid:#DCFCE7;
+  --dark:#0D0D0D;--dark-2:#161616;--dark-3:#1E1E1E;
+  --white:#FFFFFF;--bg:#F7F7F7;--bg-2:#EFEFEF;
+  --text:#0D0D0D;--text-2:#444444;--text-3:#888888;
+  --border:#E8E8E8;
+  --r-sm:6px;--r-md:12px;--r-lg:20px;--r-xl:28px;
+  --sh-sm:0 1px 4px rgba(0,0,0,.06);
+  --sh-md:0 4px 20px rgba(0,0,0,.09);
+  --sh-lg:0 12px 48px rgba(0,0,0,.11);
+  --sh-brand:0 6px 28px rgba(22,163,74,.28);
+  --f-head:'Bricolage Grotesque',sans-serif;
+  --f-body:'Plus Jakarta Sans',sans-serif;
+  --nav:72px;--cw:1200px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--f-body);background:var(--white);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+input,textarea,select{font-family:inherit}
+
+/* ─ LAYOUT ─ */
+.wrap{width:100%;max-width:var(--cw);margin:0 auto;padding:0 28px}
+.sec{padding:96px 0}
+.sec-sm{padding:64px 0}
+
+/* ─ TYPE ─ */
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+.eyebrow::before{content:'';width:22px;height:2px;background:var(--brand);border-radius:2px;flex-shrink:0}
+.h1{font-family:var(--f-head);font-size:clamp(2.5rem,4.8vw,4.2rem);font-weight:800;line-height:1.07;letter-spacing:-.03em}
+.h2{font-family:var(--f-head);font-size:clamp(1.9rem,3.2vw,3rem);font-weight:800;line-height:1.1;letter-spacing:-.025em}
+.h3{font-family:var(--f-head);font-size:1.2rem;font-weight:700;letter-spacing:-.018em}
+.lead{font-size:1.05rem;line-height:1.78;color:var(--text-2)}
+.accent{color:var(--brand)}
+
+/* ─ BUTTONS ─ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--f-body);font-weight:600;font-size:15px;border-radius:var(--r-sm);transition:all .22s ease;white-space:nowrap;cursor:pointer;border:none}
+.btn-primary{background:var(--brand);color:#fff;padding:14px 28px;box-shadow:var(--sh-brand)}
+.btn-primary:hover{background:var(--brand-d);transform:translateY(-1px);box-shadow:0 10px 32px rgba(22,163,74,.38)}
+.btn-outline{background:transparent;color:var(--text);padding:13px 27px;border:1.5px solid var(--border)}
+.btn-outline:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-pale)}
+
+/* ─ REVEAL ─ */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}
+.d4{transition-delay:.28s}.d5{transition-delay:.35s}.d6{transition-delay:.42s}
+
+/* ══════════════════════════════════════
+   NAV
+══════════════════════════════════════ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  height:var(--nav);display:flex;align-items:center;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid transparent;
+  transition:border .3s,box-shadow .3s;
+}
+#nav.stuck{border-color:var(--border);box-shadow:0 2px 16px rgba(0,0,0,.07)}
+
+.nav-wrap{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:var(--cw);margin:0 auto;padding:0 28px}
+
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--f-head);font-weight:800;font-size:1.05rem;letter-spacing:-.02em;color:var(--text)}
+.logo-icon{width:38px;height:38px;border-radius:10px;background:var(--brand);display:grid;place-items:center;flex-shrink:0}
+.logo-icon svg{width:20px;height:20px}
+.logo-sub{font-size:10.5px;font-weight:500;color:var(--text-3);letter-spacing:.02em;display:block;line-height:1.2;font-family:var(--f-body)}
+
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{padding:8px 13px;border-radius:var(--r-sm);font-size:14px;font-weight:500;color:var(--text-2);transition:color .2s,background .2s}
+.nav-links a:hover,.nav-links a.on{color:var(--text);background:var(--bg)}
+.nav-links a.on{color:var(--brand);font-weight:600;background:var(--brand-pale)}
+
+.nav-right{display:flex;align-items:center;gap:10px}
+
+.burger{display:none;flex-direction:column;gap:5px;padding:9px;width:40px;height:40px;border-radius:var(--r-sm);border:1.5px solid var(--border);background:var(--white);cursor:pointer;transition:all .2s}
+.burger span{display:block;height:1.5px;background:var(--text);border-radius:2px;transition:all .3s}
+.burger.x span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger.x span:nth-child(2){opacity:0;transform:scaleX(0)}
+.burger.x span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+.mob-nav{
+  position:fixed;inset:0;top:var(--nav);z-index:800;
+  background:var(--white);padding:20px 28px;
+  display:flex;flex-direction:column;gap:6px;
+  transform:translateX(-100%);transition:transform .38s cubic-bezier(.77,0,.175,1);
+  border-top:1px solid var(--border);overflow-y:auto;
+}
+.mob-nav.open{transform:translateX(0)}
+.mob-nav a{display:block;padding:14px 16px;border-radius:var(--r-md);font-size:1rem;font-weight:600;color:var(--text);transition:all .2s}
+.mob-nav a:hover{background:var(--brand-pale);color:var(--brand)}
+.mob-cta{margin-top:14px}
+
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+#hero{
+  min-height:100vh;
+  padding:calc(var(--nav) + 72px) 0 88px;
+  position:relative;overflow:hidden;display:flex;align-items:center;
+}
+.hero-bg{position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 20%, rgba(22,163,74,.28) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 50% at 10% 80%, rgba(16,185,129,.22) 0%, transparent 50%),
+    radial-gradient(ellipse 45% 40% at 50% 50%, rgba(6,182,212,.10) 0%, transparent 55%),
+    radial-gradient(ellipse 35% 30% at 90% 90%, rgba(99,102,241,.12) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 35% at 0% 20%,  rgba(20,184,166,.10) 0%, transparent 50%),
+    linear-gradient(135deg, #050a06 0%, #070d0a 40%, #060810 70%, #080608 100%)}
+.hero-dots{position:absolute;inset:0;z-index:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:40px 40px;
+  mask-image:radial-gradient(ellipse at center,black 40%,transparent 75%)}
+
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+
+/* badge */
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(22,163,74,.14);border:1px solid rgba(22,163,74,.28);color:var(--brand-l);padding:6px 14px;border-radius:100px;font-size:12.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:28px}
+.h-dot{width:6px;height:6px;border-radius:50%;background:var(--brand-l);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+.hero-h{font-family:var(--f-head);font-size:clamp(2.6rem,4.2vw,3.8rem);font-weight:800;line-height:1.06;letter-spacing:-.035em;color:var(--white);margin-bottom:22px}
+.hero-p{font-size:1.03rem;line-height:1.78;color:rgba(255,255,255,.58);margin-bottom:36px;max-width:460px}
+.hero-btns{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+
+.hero-trust{display:flex;align-items:center;gap:16px;padding-top:28px;border-top:1px solid rgba(255,255,255,.1)}
+.t-avs{display:flex}
+.t-avs span{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--brand) 0%,var(--brand-l) 100%);border:2px solid var(--dark);display:grid;place-items:center;font-size:11px;font-weight:700;color:#fff;margin-left:-8px;flex-shrink:0}
+.t-avs span:first-child{margin-left:0}
+.t-txt{font-size:13px;color:rgba(255,255,255,.45)}
+.t-txt strong{color:rgba(255,255,255,.8);font-weight:600}
+
+/* stat cards */
+.hero-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.hcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:var(--r-lg);padding:26px 28px;backdrop-filter:blur(10px);transition:all .3s}
+.hcard:hover{background:rgba(22,163,74,.1);border-color:rgba(22,163,74,.28);transform:translateY(-2px)}
+.hcard-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px}
+.hcard-n{font-family:var(--f-head);font-size:2.4rem;font-weight:800;line-height:1;color:var(--white);letter-spacing:-.04em}
+.hcard-n sup{font-size:1.2rem;color:var(--brand)}
+.hcard-ico{width:38px;height:38px;background:rgba(22,163,74,.15);border-radius:9px;display:grid;place-items:center;font-size:1rem}
+.hcard-l{font-size:13px;color:rgba(255,255,255,.45);font-weight:500}
+
+/* ══════════════════════════════════════
+   TICKER
+══════════════════════════════════════ */
+.ticker{background:var(--brand);padding:13px 0;overflow:hidden}
+.ticker-t{display:flex;width:max-content;animation:tick 22s linear infinite}
+.ticker-i{display:flex;align-items:center;gap:22px;padding:0 22px;white-space:nowrap;font-size:12.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.92)}
+.ticker-s{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.4)}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ══════════════════════════════════════
+   CLIENTS
+══════════════════════════════════════ */
+#clients{padding:52px 0;border-bottom:1px solid var(--border)}
+.cl-inner{display:flex;align-items:center;gap:44px;flex-wrap:wrap;justify-content:center}
+.cl-label{font-size:12.5px;font-weight:600;color:var(--text-3);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.cl-list{display:flex;align-items:center;gap:36px;flex-wrap:wrap;justify-content:center}
+.cl-name{font-family:var(--f-head);font-size:.95rem;font-weight:700;color:var(--border);letter-spacing:-.01em;transition:color .2s;cursor:default}
+.cl-name:hover{color:var(--text-3)}
+
+/* ══════════════════════════════════════
+   SERVICES
+══════════════════════════════════════ */
+#services{background:var(--white)}
+.s-head{text-align:center;max-width:600px;margin:0 auto 60px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);background:var(--border);border-radius:var(--r-xl);overflow:hidden;border:1px solid var(--border);gap:1px}
+.svc{background:var(--white);padding:36px 30px;position:relative;overflow:hidden;transition:background .25s;cursor:default}
+.svc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--brand);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.svc:hover{background:var(--brand-pale)}
+.svc:hover::after{transform:scaleX(1)}
+.svc:hover .svc-ico{background:var(--brand);border-color:var(--brand)}
+.svc:hover .svc-ico svg{stroke:#fff}
+.svc-n{position:absolute;top:22px;right:24px;font-family:var(--f-head);font-size:2.4rem;font-weight:800;color:var(--bg-2);line-height:1;user-select:none;letter-spacing:-.04em;transition:color .25s}
+.svc:hover .svc-n{color:var(--brand-mid)}
+.svc-ico{width:50px;height:50px;border-radius:var(--r-md);background:var(--bg);border:1.5px solid var(--border);display:grid;place-items:center;margin-bottom:18px;transition:all .25s}
+.svc-title{font-family:var(--f-head);font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:9px;letter-spacing:-.018em}
+.svc-desc{font-size:.875rem;line-height:1.65;color:var(--text-2)}
+.svc-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:14px}
+.tag{font-size:11px;font-weight:600;padding:3px 9px;border-radius:100px;background:var(--brand-pale);color:var(--brand);letter-spacing:.02em}
+
+/* ══════════════════════════════════════
+   ABOUT
+══════════════════════════════════════ */
+#about{background:var(--bg)}
+.ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.ab-vis{position:relative}
+.ab-card{background:var(--dark);border-radius:var(--r-xl);aspect-ratio:4/5;overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:30px}
+.ab-card-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(22,163,74,.22) 0%,transparent 60%),var(--dark-2)}
+.ab-card-dot{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.07) 1px,transparent 1px);background-size:26px 26px}
+.ab-card-body{position:relative;z-index:1;display:flex;flex-direction:column;gap:10px}
+.ab-badge{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;background:var(--brand);color:#fff;padding:7px 15px;border-radius:var(--r-sm);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.ab-tagline{font-family:var(--f-head);font-size:clamp(2rem,3.8vw,3.2rem);font-weight:800;color:var(--white);line-height:1.06;letter-spacing:-.03em}
+.ab-tagline span{color:var(--brand)}
+.ab-float{position:absolute;top:28px;right:-22px;background:var(--white);border-radius:var(--r-md);padding:18px 22px;box-shadow:var(--sh-lg);border:1px solid var(--border);text-align:center;min-width:120px}
+.ab-f-n{font-family:var(--f-head);font-size:1.9rem;font-weight:800;color:var(--brand);line-height:1}
+.ab-f-s{color:var(--brand);font-size:13px;margin:3px 0}
+.ab-f-l{font-size:11.5px;color:var(--text-3);font-weight:500}
+
+.ab-feats{display:flex;flex-direction:column;gap:0;margin-top:32px;border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden}
+.ab-feat{display:flex;align-items:flex-start;gap:14px;padding:22px 20px;border-bottom:1px solid var(--border);background:var(--white);transition:background .2s;cursor:default}
+.ab-feat:last-child{border-bottom:none}
+.ab-feat:hover{background:var(--brand-pale)}
+.ab-feat:hover .ab-fi{background:var(--brand);border-color:var(--brand)}
+.ab-feat:hover .ab-fi svg{stroke:#fff}
+.ab-fi{width:40px;height:40px;border-radius:var(--r-sm);background:var(--bg);border:1.5px solid var(--border);display:grid;place-items:center;flex-shrink:0;transition:all .2s}
+.ab-ft{font-family:var(--f-head);font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:2px;letter-spacing:-.01em}
+.ab-fd{font-size:.82rem;line-height:1.58;color:var(--text-2)}
+
+/* ══════════════════════════════════════
+   STATS
+══════════════════════════════════════ */
+#stats{padding:72px 0;position:relative;background:radial-gradient(ellipse 60% 80% at 0% 50%,rgba(22,163,74,.18) 0%,transparent 55%),radial-gradient(ellipse 50% 60% at 100% 30%,rgba(6,182,212,.12) 0%,transparent 50%),radial-gradient(ellipse 40% 50% at 50% 100%,rgba(99,102,241,.10) 0%,transparent 50%),radial-gradient(ellipse 30% 40% at 70% 0%,rgba(16,185,129,.10) 0%,transparent 50%),linear-gradient(160deg,#060c07 0%,#06090f 50%,#070c09 100%)}
+.st-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.08);border-radius:var(--r-xl);overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+.st-cell{background:var(--dark-2);padding:40px 32px;text-align:center;transition:background .25s;cursor:default}
+.st-cell:hover{background:rgba(22,163,74,.1)}
+.st-n{font-family:var(--f-head);font-size:3rem;font-weight:800;color:var(--white);line-height:1;letter-spacing:-.04em}
+.st-n sup{font-size:1.5rem;color:var(--brand)}
+.st-l{font-size:13.5px;color:rgba(255,255,255,.4);margin-top:8px;font-weight:500}
+
+/* ══════════════════════════════════════
+   PROCESS — WORLD-CLASS TIMELINE
+══════════════════════════════════════ */
+#process {
+  background: radial-gradient(ellipse 65% 55% at 15% 25%, rgba(22,163,74,.20) 0%, transparent 50%), radial-gradient(ellipse 55% 60% at 85% 75%, rgba(6,182,212,.14) 0%, transparent 50%), radial-gradient(ellipse 45% 40% at 80% 10%, rgba(16,185,129,.12) 0%, transparent 50%), radial-gradient(ellipse 40% 50% at 20% 85%, rgba(99,102,241,.10) 0%, transparent 50%), radial-gradient(ellipse 35% 35% at 50% 50%, rgba(20,184,166,.07) 0%, transparent 55%), linear-gradient(145deg, #040a05 0%, #050810 40%, #060c07 70%, #04080d 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0 150px;
+}
+#prParticles {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  width: 100%; height: 100%;
+}
+/* Deep ambient overlay */
+#process::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(ellipse 100% 50% at 50% 0%, rgba(255,255,255,.015) 0%, transparent 60%);
+}
+/* Mouse-follow highlight */
+.pr-mouse-glow {
+  position: absolute; width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(22,163,74,.04) 0%, transparent 65%);
+  pointer-events: none; z-index: 0;
+  transform: translate(-50%,-50%);
+  transition: left .4s ease, top .4s ease;
+}
+
+/* ── Header ── */
+.pr-head {
+  text-align: center; position: relative; z-index: 3;
+  margin-bottom: 96px;
+}
+.pr-head .h2 { color: #fff; margin: 10px 0 18px; letter-spacing: -.03em; }
+.pr-head .lead { color: rgba(255,255,255,.32); max-width: 380px; margin: 0 auto; font-size: .9rem; line-height: 1.85; }
+
+/* ── Timeline ── */
+.pr-timeline {
+  position: relative; z-index: 2;
+  max-width: 1020px; margin: 0 auto; padding: 0 24px;
+}
+
+/* ── Spine ── */
+.pr-spine {
+  position: absolute; left: 50%; top: 0; bottom: 0;
+  width: 1px; transform: translateX(-50%); z-index: 1;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(255,255,255,.06) 5%,
+    rgba(255,255,255,.06) 95%,
+    transparent 100%);
+}
+.pr-spine-fill {
+  position: absolute; left: 0; top: 0; width: 100%; height: 0%;
+  background: linear-gradient(180deg, #16A34A, #4ADE80, #16A34A);
+  background-size: 100% 300%;
+  animation: spineGlow 4s ease-in-out infinite;
+  transition: height .5s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 0 6px 2px rgba(22,163,74,.7), 0 0 16px 4px rgba(22,163,74,.35);
+}
+@keyframes spineGlow {
+  0%,100% { background-position: 0% 0%; }
+  50%      { background-position: 0% 100%; }
+}
+
+/* ── Step row ── */
+.pr-step {
+  display: grid;
+  grid-template-columns: 1fr 96px 1fr;
+  align-items: center;
+  position: relative;
+  opacity: 0;
+  transition: opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1);
+}
+.pr-step.pr-odd  { transform: translateX(-50px); }
+.pr-step.pr-even { transform: translateX(50px); }
+.pr-step.pr-visible { opacity: 1; transform: translateX(0) !important; }
+
+/* ── Center col ── */
+.pr-step-center {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 10px; position: relative; z-index: 4; padding: 40px 0;
+}
+
+/* ── Circle ── */
+.pr-step-circle {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: radial-gradient(145deg, #141418 0%, #0c0c0f 100%);
+  border: 1.5px solid rgba(255,255,255,.08);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; cursor: pointer; flex-shrink: 0; z-index: 2;
+  transition: transform .45s cubic-bezier(.34,1.56,.64,1),
+              background .35s, border-color .35s, box-shadow .35s;
+}
+/* Rotating dashed ring */
+.pr-step-circle::before {
+  content: '';
+  position: absolute; inset: -9px; border-radius: 50%;
+  border: 1.5px dashed transparent;
+  transition: border-color .4s;
+}
+/* Outer soft halo */
+.pr-step-circle::after {
+  content: '';
+  position: absolute; inset: -18px; border-radius: 50%;
+  border: 1px solid transparent;
+  opacity: 0; transition: border-color .4s, opacity .4s;
+}
+.pr-step-circle:hover {
+  transform: scale(1.08);
+  border-color: rgba(22,163,74,.25);
+  box-shadow: 0 0 20px rgba(22,163,74,.2);
+}
+.pr-step-circle.active {
+  background: linear-gradient(145deg, #16A34A, #22C55E);
+  border-color: transparent;
+  transform: scale(1.15);
+  box-shadow:
+    0 0 0 8px rgba(22,163,74,.1),
+    0 0 0 18px rgba(22,163,74,.05),
+    0 0 28px rgba(22,163,74,.6),
+    0 0 60px rgba(22,163,74,.2),
+    inset 0 1px 0 rgba(255,255,255,.25),
+    inset 0 -1px 0 rgba(0,0,0,.3);
+}
+.pr-step-circle.active::before {
+  border-color: rgba(22,163,74,.3);
+  animation: rotateDash 10s linear infinite;
+}
+.pr-step-circle.active::after {
+  border-color: rgba(22,163,74,.1);
+  opacity: 1;
+  animation: pulseHalo 2.8s ease-in-out infinite;
+}
+@keyframes rotateDash { to { transform: rotate(360deg); } }
+@keyframes pulseHalo {
+  0%,100% { transform: scale(1);    opacity: .7; }
+  50%      { transform: scale(1.06); opacity: 1; }
+}
+.pr-step-circle.done {
+  background: linear-gradient(145deg, rgba(22,163,74,.15), rgba(22,163,74,.06));
+  border-color: rgba(22,163,74,.4);
+  box-shadow: 0 0 12px rgba(22,163,74,.15);
+}
+/* SVG icon states */
+.pr-step-circle svg { position: relative; z-index: 1; transition: all .35s; filter: none; opacity: .45; }
+.pr-step-circle:hover svg { opacity: .75; }
+.pr-step-circle.active svg { opacity: 1; filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(255,255,255,.5)); }
+.pr-step-circle.done   svg { opacity: .5; }
+
+/* Step label */
+.pr-step-label {
+  font-family: var(--f-head); font-size: .62rem; font-weight: 800;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(255,255,255,.14); text-align: center;
+  transition: color .35s; white-space: nowrap;
+  line-height: 1;
+}
+.pr-step-circle.active ~ .pr-step-label { color: #4ADE80; }
+.pr-step-circle.done   ~ .pr-step-label { color: rgba(22,163,74,.38); }
+
+/* ── Connector arm ── */
+.pr-step-arm {
+  position: absolute; height: 1px;
+  top: 50%; transform: translateY(-50%);
+  pointer-events: none; width: 0;
+  transition: width .7s .4s cubic-bezier(.22,1,.36,1);
+}
+.pr-step.pr-odd  .pr-step-arm { right: 100%; background: linear-gradient(270deg, rgba(22,163,74,.7) 0%, transparent 100%); }
+.pr-step.pr-even .pr-step-arm { left: 100%;  background: linear-gradient(90deg,  rgba(22,163,74,.7) 0%, transparent 100%); }
+/* Arrowhead dot */
+.pr-step-arm::before {
+  content: ''; position: absolute; top: 50%; transform: translateY(-50%);
+  width: 4px; height: 4px; border-radius: 50%; background: rgba(22,163,74,.6);
+}
+.pr-step.pr-odd  .pr-step-arm::before { left: 0; }
+.pr-step.pr-even .pr-step-arm::before { right: 0; }
+.pr-step.pr-visible .pr-step-arm { width: 48px; }
+
+/* ── Card column ── */
+.pr-step-card-col { padding: 18px 0; }
+.pr-step.pr-odd  .pr-step-card-col { padding-right: 16px; }
+.pr-step.pr-even .pr-step-card-col { padding-left: 16px; }
+
+/* ── Card ── */
+.pr-card {
+  border-radius: 20px;
+  padding: 0;
+  position: relative; overflow: hidden; cursor: pointer;
+  transition: transform .38s cubic-bezier(.22,1,.36,1), box-shadow .38s, border-color .35s;
+  /* layered border via box-shadow — avoids ::before/::after conflicts */
+  box-shadow: 0 0 0 1px rgba(255,255,255,.07), inset 0 1px 0 rgba(255,255,255,.04);
+  background: linear-gradient(145deg, rgba(255,255,255,.035) 0%, rgba(255,255,255,.015) 100%);
+}
+.pr-card:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow:
+    0 0 0 1px rgba(22,163,74,.25),
+    0 12px 40px rgba(0,0,0,.4),
+    0 4px 12px rgba(22,163,74,.06),
+    inset 0 1px 0 rgba(255,255,255,.06);
+  background: linear-gradient(145deg, rgba(22,163,74,.07) 0%, rgba(255,255,255,.015) 100%);
+}
+.pr-card.active {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow:
+    0 0 0 1px rgba(22,163,74,.38),
+    0 16px 48px rgba(0,0,0,.55),
+    0 0 60px rgba(22,163,74,.06),
+    inset 0 1px 0 rgba(255,255,255,.09),
+    inset 0 -1px 0 rgba(0,0,0,.2);
+  background: linear-gradient(145deg, rgba(22,163,74,.12) 0%, rgba(22,163,74,.04) 60%, transparent 100%);
+}
+
+/* Card inner padding wrapper */
+.pr-card-inner { padding: 28px 26px 24px; position: relative; z-index: 1; }
+
+/* Orange top edge shimmer */
+.pr-card-edge {
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(22,163,74,.9) 50%, transparent 100%);
+  opacity: 0; transition: opacity .35s;
+}
+.pr-card:hover .pr-card-edge, .pr-card.active .pr-card-edge { opacity: 1; }
+
+/* Corner bracket top-left */
+.pr-card-corner-tl, .pr-card-corner-br {
+  position: absolute; width: 18px; height: 18px; pointer-events: none; z-index: 2;
+  transition: opacity .3s;
+}
+.pr-card-corner-tl { top: 10px; left: 10px; border-top: 1.5px solid rgba(22,163,74,0); border-left: 1.5px solid rgba(22,163,74,0); transition: border-color .35s; }
+.pr-card-corner-br { bottom: 10px; right: 10px; border-bottom: 1.5px solid rgba(22,163,74,0); border-right: 1.5px solid rgba(22,163,74,0); transition: border-color .35s; }
+.pr-card:hover .pr-card-corner-tl,
+.pr-card.active .pr-card-corner-tl { border-color: rgba(22,163,74,.6); }
+.pr-card:hover .pr-card-corner-br,
+.pr-card.active .pr-card-corner-br { border-color: rgba(22,163,74,.6); }
+
+/* Ambient glow blob in card */
+.pr-card-glow {
+  position: absolute; top: -60px; right: -60px; width: 180px; height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(22,163,74,.22) 0%, transparent 65%);
+  opacity: 0; transition: opacity .45s; pointer-events: none;
+}
+.pr-card.active .pr-card-glow { opacity: 1; }
+
+/* Huge ghost number */
+.pr-card-ghost {
+  position: absolute; bottom: -24px; right: -4px;
+  font-family: var(--f-head); font-size: 8rem; font-weight: 800;
+  line-height: 1; letter-spacing: -.08em; user-select: none; pointer-events: none;
+  color: rgba(255,255,255,.02); transition: color .4s, transform .4s;
+}
+.pr-card.active .pr-card-ghost { color: rgba(22,163,74,.09); transform: scale(1.04) translateX(-4px); }
+
+/* Step badge */
+.pr-card-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  margin-bottom: 13px;
+  font-size: 9px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(22,163,74,.45); transition: color .35s;
+}
+.pr-card-badge::before {
+  content: ''; width: 16px; height: 1.5px;
+  background: currentColor; border-radius: 2px; flex-shrink: 0;
+}
+.pr-card.active .pr-card-badge { color: #4ADE80; }
+.pr-card:hover  .pr-card-badge { color: rgba(34,197,94,.7); }
+
+/* Card header row: icon + title */
+.pr-card-header {
+  display: flex; align-items: flex-start; gap: 14px; margin-bottom: 13px;
+}
+.pr-card-ico {
+  width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
+  display: flex; align-items: center; justify-content: center;
+  transition: background .35s, border-color .35s, box-shadow .35s;
+}
+.pr-card:hover  .pr-card-ico { background: rgba(22,163,74,.1); border-color: rgba(22,163,74,.22); }
+.pr-card.active .pr-card-ico {
+  background: rgba(22,163,74,.18); border-color: rgba(22,163,74,.4);
+  box-shadow: 0 0 16px rgba(22,163,74,.2);
+}
+.pr-card-title {
+  font-family: var(--f-head); font-size: 1.14rem; font-weight: 800;
+  color: rgba(255,255,255,.45); letter-spacing: -.025em; line-height: 1.2;
+  padding-top: 2px; transition: color .35s;
+}
+.pr-card:hover  .pr-card-title { color: rgba(255,255,255,.8); }
+.pr-card.active .pr-card-title { color: #fff; }
+
+/* Description */
+.pr-card-desc {
+  font-size: .84rem; line-height: 1.78;
+  color: rgba(255,255,255,.22); transition: color .35s;
+}
+.pr-card:hover  .pr-card-desc { color: rgba(255,255,255,.45); }
+.pr-card.active .pr-card-desc { color: rgba(255,255,255,.52); }
+
+/* Tags */
+.pr-card-tags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  overflow: hidden; max-height: 0; opacity: 0; margin-top: 0;
+  transition: none;
+}
+.pr-tags-ready .pr-card-tags {
+  transition: max-height .55s ease, opacity .45s ease, margin-top .45s ease;
+}
+.pr-card.active .pr-card-tags { max-height: 80px; opacity: 1; margin-top: 16px; }
+.pr-ctag {
+  font-size: 9.5px; font-weight: 700;
+  padding: 4px 11px; border-radius: 100px;
+  background: rgba(22,163,74,.08); border: 1px solid rgba(22,163,74,.2);
+  color: rgba(34,197,94,.82); letter-spacing: .05em; text-transform: uppercase;
+  transition: background .2s, color .2s;
+}
+.pr-card.active .pr-ctag:hover { background: rgba(22,163,74,.18); color: #4ADE80; }
+
+/* ── Mobile ── */
+@media(max-width:660px){
+  .pr-step { grid-template-columns: 56px 1fr; }
+  .pr-step.pr-odd  .pr-step-card-col,
+  .pr-step.pr-even .pr-step-card-col { grid-column: 2; grid-row: 1; padding: 10px 0 10px 12px; }
+  .pr-step-center { grid-column: 1; grid-row: 1; padding: 16px 0; gap: 6px; }
+  .pr-step-empty { display: none; }
+  .pr-spine { left: 27px; }
+  .pr-step-circle { width: 54px; height: 54px; }
+  .pr-step-label, .pr-step-arm { display: none; }
+  .pr-card-inner { padding: 20px 16px 18px; }
+  .pr-card-ghost { font-size: 5.5rem; }
+  .pr-mouse-glow { display: none; }
+}
+/* ══════════════════════════════════════
+   TECH
+══════════════════════════════════════ */
+#tech{background:var(--bg)}
+.tc-hdr{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:44px;gap:24px;flex-wrap:wrap}
+.tc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tc-col{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:26px;transition:all .25s}
+.tc-col:hover{border-color:var(--brand);box-shadow:var(--sh-md)}
+.tc-ch{display:flex;align-items:center;gap:9px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.tc-ci{width:34px;height:34px;background:var(--brand-pale);border-radius:var(--r-sm);display:grid;place-items:center;font-size:.9rem}
+.tc-ct{font-family:var(--f-head);font-size:.88rem;font-weight:700;color:var(--text);letter-spacing:-.01em}
+.tc-items{display:flex;flex-direction:column;gap:9px}
+.tc-item{display:flex;align-items:center;gap:7px;font-size:.84rem;color:var(--text-2);font-weight:500}
+.tc-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--brand);flex-shrink:0;opacity:.55}
+
+/* ══════════════════════════════════════
+   TESTIMONIALS
+══════════════════════════════════════ */
+#testimonials{background:var(--white)}
+.ts-head{text-align:center;max-width:520px;margin:0 auto 52px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.ts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ts-card{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:30px;display:flex;flex-direction:column;transition:all .28s}
+.ts-card:hover{border-color:var(--brand);box-shadow:var(--sh-lg);transform:translateY(-3px)}
+.ts-stars{display:flex;gap:2px;margin-bottom:14px}
+.ts-stars span{color:var(--brand);font-size:14px}
+.ts-txt{font-size:.88rem;line-height:1.72;color:var(--text-2);flex:1;font-style:italic}
+.ts-foot{display:flex;align-items:center;gap:11px;margin-top:22px;padding-top:18px;border-top:1px solid var(--border)}
+.ts-av{width:40px;height:40px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--brand) 0%,var(--brand-l) 100%);display:grid;place-items:center;font-weight:700;font-size:.86rem;color:#fff}
+.ts-name{font-family:var(--f-head);font-size:.88rem;font-weight:700;color:var(--text)}
+.ts-role{font-size:.75rem;color:var(--text-3);margin-top:2px}
+
+/* ══════════════════════════════════════
+   CONTACT
+══════════════════════════════════════ */
+#contact{padding:96px 0;background:radial-gradient(ellipse 55% 70% at 90% 10%,rgba(22,163,74,.20) 0%,transparent 55%),radial-gradient(ellipse 50% 55% at 5% 90%,rgba(6,182,212,.13) 0%,transparent 50%),radial-gradient(ellipse 40% 45% at 40% 40%,rgba(99,102,241,.09) 0%,transparent 50%),radial-gradient(ellipse 35% 35% at 70% 80%,rgba(16,185,129,.11) 0%,transparent 50%),linear-gradient(150deg,#060b07 0%,#05080e 45%,#070b06 100%)}
+.ct-wrap{background:linear-gradient(135deg,rgba(22,163,74,.13) 0%,rgba(22,163,74,.05) 100%);border:1px solid rgba(22,163,74,.2);border-radius:var(--r-xl);padding:68px 60px;position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.ct-glow{position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(22,163,74,.14) 0%,transparent 70%);top:-100px;right:-80px;pointer-events:none}
+.ct-l{position:relative;z-index:1}
+.ct-h{font-family:var(--f-head);font-size:clamp(1.9rem,3vw,2.6rem);font-weight:800;color:var(--white);line-height:1.12;letter-spacing:-.03em;margin-top:14px;margin-bottom:14px}
+.ct-h span{color:var(--brand)}
+.ct-d{font-size:.93rem;line-height:1.72;color:rgba(255,255,255,.52);margin-bottom:30px}
+.ct-infos{display:flex;flex-direction:column;gap:11px}
+.ct-inf{display:flex;align-items:center;gap:11px;font-size:.88rem;color:rgba(255,255,255,.55)}
+.ct-inf-ico{width:34px;height:34px;background:rgba(22,163,74,.15);border:1px solid rgba(22,163,74,.2);border-radius:var(--r-sm);display:grid;place-items:center;flex-shrink:0}
+
+/* Form */
+.ct-form{position:relative;z-index:1;display:flex;flex-direction:column;gap:14px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.f-field{display:flex;flex-direction:column;gap:5px}
+.f-label{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.55);letter-spacing:.02em}
+.f-inp,.f-sel,.f-ta{
+  width:100%;padding:12px 15px;border-radius:var(--r-sm);
+  background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);
+  color:var(--white);font-size:.88rem;font-family:var(--f-body);
+  outline:none;transition:border .2s,background .2s;
+  appearance:none;-webkit-appearance:none;
+}
+.f-inp::placeholder,.f-ta::placeholder{color:rgba(255,255,255,.28)}
+.f-inp:focus,.f-sel:focus,.f-ta:focus{border-color:var(--brand);background:rgba(22,163,74,.07)}
+.f-ta{resize:vertical;min-height:108px}
+.f-sel option{background:var(--dark-3);color:var(--white)}
+.f-btn{padding:14px 28px;border-radius:var(--r-sm);background:var(--brand);color:#fff;font-family:var(--f-body);font-weight:700;font-size:15px;cursor:pointer;transition:all .22s;border:none;display:flex;align-items:center;justify-content:center;gap:8px}
+.f-btn:hover{background:var(--brand-d);box-shadow:var(--sh-brand)}
+.f-note{font-size:11.5px;color:rgba(255,255,255,.28);text-align:center;margin-top:2px}
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+footer{border-top:1px solid rgba(255,255,255,.06);background:radial-gradient(ellipse 50% 60% at 20% 50%,rgba(22,163,74,.12) 0%,transparent 55%),radial-gradient(ellipse 40% 50% at 80% 50%,rgba(6,182,212,.08) 0%,transparent 50%),radial-gradient(ellipse 30% 40% at 50% 0%,rgba(99,102,241,.07) 0%,transparent 50%),linear-gradient(180deg,#050a06 0%,#040810 60%,#050a06 100%)}
+.ft-main{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;gap:44px;padding:60px 0 44px;border-bottom:1px solid rgba(255,255,255,.06)}
+.ft-desc{font-size:.86rem;line-height:1.7;color:rgba(255,255,255,.38);margin-top:14px;max-width:280px}
+.ft-contact{margin-top:22px;display:flex;flex-direction:column;gap:8px}
+.ft-contact a{font-size:.82rem;color:rgba(255,255,255,.42);transition:color .2s;display:flex;align-items:center;gap:7px}
+.ft-contact a:hover{color:var(--brand-l)}
+.ft-col h5{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.33);margin-bottom:18px}
+.ft-col ul{display:flex;flex-direction:column;gap:9px}
+.ft-col a{font-size:.84rem;color:rgba(255,255,255,.48);transition:color .2s}
+.ft-col a:hover{color:rgba(255,255,255,.85)}
+.ft-bottom{display:flex;align-items:center;justify-content:space-between;padding:22px 0;flex-wrap:wrap;gap:14px}
+.ft-copy{font-size:12.5px;color:rgba(255,255,255,.22)}
+.ft-socials{display:flex;gap:8px}
+.soc{width:34px;height:34px;border-radius:var(--r-sm);border:1px solid rgba(255,255,255,.1);display:grid;place-items:center;font-size:12px;font-weight:700;color:rgba(255,255,255,.38);transition:all .2s}
+.soc:hover{background:var(--brand);border-color:var(--brand);color:#fff}
+
+/* back-top */
+.btt{position:fixed;bottom:26px;right:26px;z-index:500;width:42px;height:42px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;box-shadow:var(--sh-brand);opacity:0;pointer-events:none;transform:translateY(10px);transition:all .3s;border:none;cursor:pointer}
+.btt.vis{opacity:1;pointer-events:all;transform:translateY(0)}
+.btt:hover{background:var(--brand-d);transform:translateY(-2px)}
+
+/* ──────────── RESPONSIVE ──────────── */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:44px}
+  .hero-cards{grid-template-columns:repeat(2,1fr)}
+  .hero-p{max-width:100%}
+  .ab-grid{grid-template-columns:1fr;gap:44px}
+  .ab-vis{max-width:400px}
+  .ab-float{right:0}
+  .ct-wrap{grid-template-columns:1fr;gap:44px;padding:48px 40px}
+  .tc-grid{grid-template-columns:repeat(2,1fr)}
+  .st-grid{grid-template-columns:repeat(2,1fr)}
+  .ft-main{grid-template-columns:1fr 1fr;gap:28px}
+}
+@media(max-width:768px){
+  .sec{padding:64px 0}.sec-sm{padding:48px 0}
+  .nav-links,.nav-right .btn-outline{display:none}
+  .burger{display:flex}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .pr-grid{grid-template-columns:1fr}
+  .ts-grid{grid-template-columns:1fr}
+  .f-row{grid-template-columns:1fr}
+  .hero-cards .hcard:nth-child(n+3){display:none}
+  .ft-main{grid-template-columns:1fr}
+}
+@media(max-width:540px){
+  .svc-grid{grid-template-columns:1fr}
+  .tc-grid{grid-template-columns:1fr}
+  .st-grid{grid-template-columns:1fr}
+  .hero-h{font-size:2.4rem}
+  .hero-cards{display:none}
+  .ct-wrap{padding:36px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header id="nav">
+  <div class="nav-wrap">
+    <a href="#" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="12,2 21,7 21,17 12,22 3,17 3,7" stroke="white" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+          <circle cx="12" cy="12" r="3.2" fill="white"/>
+          <circle cx="12" cy="3.8" r="1.1" fill="white" opacity=".75"/>
+        </svg>
+      </div>
+      <div>Optiverse IT <span class="logo-sub">Solution Pvt. Ltd.</span></div>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#tech">Technologies</a>
+      <a href="#testimonials">Reviews</a>
+    </nav>
+
+    <div class="nav-right">
+      <a href="#contact" class="btn btn-outline">Get a Quote</a>
+      <a href="#contact" class="btn btn-primary">Start Project</a>
+      <button class="burger" id="burger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mob-nav" id="mobNav">
+  <a href="#services" onclick="cm()">Services</a>
+  <a href="#about" onclick="cm()">About</a>
+  <a href="#process" onclick="cm()">Process</a>
+  <a href="#tech" onclick="cm()">Technologies</a>
+  <a href="#testimonials" onclick="cm()">Reviews</a>
+  <div class="mob-cta"><a href="#contact" class="btn btn-primary" style="display:flex;width:100%;justify-content:center" onclick="cm()">Start a Project →</a></div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-dots"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+
+      <div>
+        <div class="hero-tag"><span class="h-dot"></span>Kathmandu, Nepal &mdash; Est. 2020</div>
+        <h1 class="hero-h">Building Digital<br/>Products That<br/><span class="accent">Drive Growth.</span></h1>
+        <p class="hero-p">Full-service software development and digital marketing company. We design, build, and scale digital solutions for businesses across Nepal and beyond.</p>
+        <div class="hero-btns">
+          <a href="#services" class="btn btn-primary">Explore Services &rarr;</a>
+          <a href="#contact" class="btn" style="color:rgba(255,255,255,.75);border:1.5px solid rgba(255,255,255,.18);background:rgba(255,255,255,.07);padding:13px 27px;border-radius:6px;font-weight:600;font-size:15px">Free Consultation</a>
+        </div>
+        <div class="hero-trust">
+          <div class="t-avs"><span>RK</span><span>SP</span><span>AB</span><span>+</span></div>
+          <div class="t-txt">Trusted by <strong>50+ businesses</strong> across Nepal &amp; globally</div>
+        </div>
+      </div>
+
+      <div class="hero-cards">
+        <div class="hcard"><div class="hcard-top"><div class="hcard-n">150<sup>+</sup></div><div class="hcard-ico">🚀</div></div><div class="hcard-l">Projects Delivered</div></div>
+        <div class="hcard"><div class="hcard-top"><div class="hcard-n">98<sup>%</sup></div><div class="hcard-ico">⭐</div></div><div class="hcard-l">Client Satisfaction</div></div>
+        <div class="hcard"><div class="hcard-top"><div class="hcard-n">5<sup>+</sup></div><div class="hcard-ico">📅</div></div><div class="hcard-l">Years of Experience</div></div>
+        <div class="hcard"><div class="hcard-top"><div class="hcard-n">10<sup>+</sup></div><div class="hcard-ico">👥</div></div><div class="hcard-l">Expert Team Members</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-t">
+    <div class="ticker-i"><span class="ticker-s"></span>Web Development</div>
+    <div class="ticker-i"><span class="ticker-s"></span>Mobile Apps</div>
+    <div class="ticker-i"><span class="ticker-s"></span>UI / UX Design</div>
+    <div class="ticker-i"><span class="ticker-s"></span>Digital Marketing</div>
+    <div class="ticker-i"><span class="ticker-s"></span>SEO &amp; Growth</div>
+    <div class="ticker-i"><span class="ticker-s"></span>E-Commerce</div>
+    <div class="ticker-i"><span class="ticker-s"></span>Cloud &amp; DevOps</div>
+    <div class="ticker-i"><span class="ticker-s"></span>Brand Identity</div>
+    <div class="ticker-i"><span class="ticker-s"></span>API Integration</div>
+    <div class="ticker-i"><span class="ticker-s"></span>Web Development</div>
+    <div class="ticker-i"><span class="ticker-s"></span>Mobile Apps</div>
+    <div class="ticker-i"><span class="ticker-s"></span>UI / UX Design</div>
+    <div class="ticker-i"><span class="ticker-s"></span>Digital Marketing</div>
+    <div class="ticker-i"><span class="ticker-s"></span>SEO &amp; Growth</div>
+    <div class="ticker-i"><span class="ticker-s"></span>E-Commerce</div>
+    <div class="ticker-i"><span class="ticker-s"></span>Cloud &amp; DevOps</div>
+    <div class="ticker-i"><span class="ticker-s"></span>Brand Identity</div>
+    <div class="ticker-i"><span class="ticker-s"></span>API Integration</div>
+  </div>
+</div>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <div class="wrap">
+    <div class="cl-inner">
+      <span class="cl-label">Trusted by</span>
+      <div class="cl-list">
+        <span class="cl-name">Himalayan Exports</span>
+        <span class="cl-name">ConnectNepal</span>
+        <span class="cl-name">TechHub Nepal</span>
+        <span class="cl-name">SwiftPay</span>
+        <span class="cl-name">NepBazaar</span>
+        <span class="cl-name">EduNepal</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="sec">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="eyebrow">What We Do</span>
+      <h2 class="h2">Services That Deliver <span class="accent">Real Results</span></h2>
+      <p class="lead" style="text-align:center">End-to-end digital services — from strategy and design to development and marketing.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc reveal d1">
+        <span class="svc-n">01</span>
+        <div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <div class="svc-title">Web Design &amp; Development</div>
+        <p class="svc-desc">High-performance websites and web apps built with React, Next.js, and Laravel. Mobile-first, SEO-ready, and optimised for conversions.</p>
+        <div class="svc-tags"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Laravel</span></div>
+      </div>
+      <div class="svc reveal d2">
+        <span class="svc-n">02</span>
+        <div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+        <div class="svc-title">Mobile App Development</div>
+        <p class="svc-desc">Cross-platform iOS &amp; Android apps using Flutter and React Native. Beautiful UX with full Play Store and App Store deployment.</p>
+        <div class="svc-tags"><span class="tag">Flutter</span><span class="tag">React Native</span><span class="tag">iOS/Android</span></div>
+      </div>
+      <div class="svc reveal d3">
+        <span class="svc-n">03</span>
+        <div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg></div>
+        <div class="svc-title">UI / UX Design</div>
+        <p class="svc-desc">Research-driven design that converts. Wireframes, prototypes, and polished interfaces crafted for real user goals.</p>
+        <div class="svc-tags"><span class="tag">Figma</span><span class="tag">Prototyping</span><span class="tag">User Research</span></div>
+      </div>
+      <div class="svc reveal d4">
+        <span class="svc-n">04</span>
+        <div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <div class="svc-title">Digital Marketing &amp; SEO</div>
+        <p class="svc-desc">SEO, social media, PPC, and content strategy. We build audiences and marketing pipelines that compound over time.</p>
+        <div class="svc-tags"><span class="tag">SEO</span><span class="tag">Google Ads</span><span class="tag">Social Media</span></div>
+      </div>
+      <div class="svc reveal d5">
+        <span class="svc-n">05</span>
+        <div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div>
+        <div class="svc-title">E-Commerce Solutions</div>
+        <p class="svc-desc">Custom online stores on Shopify, WooCommerce, or bespoke stacks. Payment gateways, inventory, and post-launch support.</p>
+        <div class="svc-tags"><span class="tag">Shopify</span><span class="tag">WooCommerce</span><span class="tag">Custom</span></div>
+      </div>
+      <div class="svc reveal d6">
+        <span class="svc-n">06</span>
+        <div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4.03 3-9 3S3 13.66 3 12"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/></svg></div>
+        <div class="svc-title">Cloud &amp; DevOps</div>
+        <p class="svc-desc">Scalable infrastructure on AWS and GCP. CI/CD pipelines, Docker, and 24/7 monitoring for zero downtime.</p>
+        <div class="svc-tags"><span class="tag">AWS</span><span class="tag">Docker</span><span class="tag">CI/CD</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="sec">
+  <div class="wrap">
+    <div class="ab-grid">
+      <div class="ab-vis reveal">
+        <div class="ab-card">
+          <div class="ab-card-bg"></div>
+          <div class="ab-card-dot"></div>
+          <div class="ab-card-body">
+            <div class="ab-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              Est. 2020 &middot; Kathmandu, Nepal
+            </div>
+            <div class="ab-tagline">Your Digital<br/><span>Growth</span><br/>Partner.</div>
+          </div>
+        </div>
+        <div class="ab-float">
+          <div class="ab-f-n">5.0</div>
+          <div class="ab-f-s">★★★★★</div>
+          <div class="ab-f-l">Average Rating</div>
+        </div>
+      </div>
+
+      <div class="reveal d2">
+        <span class="eyebrow">Who We Are</span>
+        <h2 class="h2" style="margin:14px 0 18px">A results-driven IT company from the heart of Nepal.</h2>
+        <p class="lead">Optiverse IT Solution is a full-service technology company based in Kathmandu. Since 2020, we've partnered with startups, SMEs, and enterprises — helping them build software, apps, and marketing systems that deliver real, measurable results.</p>
+        <p style="margin-top:14px;font-size:.9rem;line-height:1.72;color:var(--text-2)">We're a team of developers, designers, and marketers who care about craft and outcomes. No bloated agency process — just clear communication, honest timelines, and work that makes a difference.</p>
+        <div class="ab-feats">
+          <div class="ab-feat">
+            <div class="ab-fi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            <div><div class="ab-ft">Honest timelines, always delivered</div><div class="ab-fd">We plan carefully, communicate early, and build in buffers. When we give a deadline, we mean it.</div></div>
+          </div>
+          <div class="ab-feat">
+            <div class="ab-fi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div><div class="ab-ft">Security-first development</div><div class="ab-fd">Every product follows OWASP best practices and is audited before going live.</div></div>
+          </div>
+          <div class="ab-feat">
+            <div class="ab-fi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+            <div><div class="ab-ft">Nepal roots, global standards</div><div class="ab-fd">Competitive pricing without ever compromising quality. We hold ourselves to international standards.</div></div>
+          </div>
+        </div>
+        <a href="#contact" class="btn btn-primary" style="margin-top:28px;display:inline-flex">Start a Project &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="wrap">
+    <div class="st-grid">
+      <div class="st-cell reveal"><div class="st-n" id="s1">0<sup>+</sup></div><div class="st-l">Projects Delivered</div></div>
+      <div class="st-cell reveal d2"><div class="st-n" id="s2">0<sup>+</sup></div><div class="st-l">Happy Clients</div></div>
+      <div class="st-cell reveal d3"><div class="st-n" id="s3">0<sup>+</sup></div><div class="st-l">Years of Experience</div></div>
+      <div class="st-cell reveal d4"><div class="st-n" id="s4">0<sup>%</sup></div><div class="st-l">Client Satisfaction</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <canvas id="prParticles"></canvas>
+  <div class="pr-mouse-glow" id="prMouseGlow"></div>
+
+  <div class="wrap" style="position:relative;z-index:3">
+
+    <div class="pr-head">
+      <span class="eyebrow">How We Work</span>
+      <h2 class="h2">From First Call <span class="accent">to Launch</span></h2>
+      <p class="lead">A clear, proven process that ensures every project delivers on time — and beyond expectations.</p>
+    </div>
+
+    <div class="pr-timeline" id="prTimeline">
+      <div class="pr-spine"><div class="pr-spine-fill" id="prSpineFill"></div></div>
+
+      <!-- ══ STEP 01 — LEFT ══ -->
+      <div class="pr-step pr-odd" data-idx="0">
+        <div class="pr-step-card-col">
+          <div class="pr-card active" onclick="prClick(0)">
+            <div class="pr-card-edge"></div>
+            <div class="pr-card-corner-tl"></div>
+            <div class="pr-card-corner-br"></div>
+            <div class="pr-card-glow"></div>
+            <div class="pr-card-ghost">01</div>
+            <div class="pr-card-inner">
+              <div class="pr-card-badge">Step 01</div>
+              <div class="pr-card-header">
+                <div class="pr-card-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+                <div class="pr-card-title">Discovery &amp;<br>Consultation</div>
+              </div>
+              <p class="pr-card-desc">A free 30-minute call to understand your goals and what success looks like. No pitch — just an honest conversation where we listen first.</p>
+              <div class="pr-card-tags">
+                <span class="pr-ctag">Free call</span>
+                <span class="pr-ctag">Goal mapping</span>
+                <span class="pr-ctag">No obligation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pr-step-center">
+          <div class="pr-step-circle active" onclick="prClick(0)">
+            <div class="pr-step-arm"></div>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <span class="pr-step-label">Step 01</span>
+        </div>
+        <div class="pr-step-empty"></div>
+      </div>
+
+      <!-- ══ STEP 02 — RIGHT ══ -->
+      <div class="pr-step pr-even" data-idx="1">
+        <div class="pr-step-empty"></div>
+        <div class="pr-step-center">
+          <div class="pr-step-circle" onclick="prClick(1)">
+            <div class="pr-step-arm"></div>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <span class="pr-step-label">Step 02</span>
+        </div>
+        <div class="pr-step-card-col">
+          <div class="pr-card" onclick="prClick(1)">
+            <div class="pr-card-edge"></div>
+            <div class="pr-card-corner-tl"></div>
+            <div class="pr-card-corner-br"></div>
+            <div class="pr-card-glow"></div>
+            <div class="pr-card-ghost">02</div>
+            <div class="pr-card-inner">
+              <div class="pr-card-badge">Step 02</div>
+              <div class="pr-card-header">
+                <div class="pr-card-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+                <div class="pr-card-title">Proposal &amp;<br>Scope</div>
+              </div>
+              <p class="pr-card-desc">A detailed written proposal covering what we'll build, cost, and timeline — line by line. No hidden fees. Full transparency from day one.</p>
+              <div class="pr-card-tags">
+                <span class="pr-ctag">Itemised pricing</span>
+                <span class="pr-ctag">Clear milestones</span>
+                <span class="pr-ctag">No hidden costs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ STEP 03 — LEFT ══ -->
+      <div class="pr-step pr-odd" data-idx="2">
+        <div class="pr-step-card-col">
+          <div class="pr-card" onclick="prClick(2)">
+            <div class="pr-card-edge"></div>
+            <div class="pr-card-corner-tl"></div>
+            <div class="pr-card-corner-br"></div>
+            <div class="pr-card-glow"></div>
+            <div class="pr-card-ghost">03</div>
+            <div class="pr-card-inner">
+              <div class="pr-card-badge">Step 03</div>
+              <div class="pr-card-header">
+                <div class="pr-card-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+                <div class="pr-card-title">Design &amp;<br>Prototype</div>
+              </div>
+              <p class="pr-card-desc">Before a single line of code is written, you approve every pixel. Figma mockups, user flows, interactive prototypes — refined until it feels exactly right.</p>
+              <div class="pr-card-tags">
+                <span class="pr-ctag">Figma mockups</span>
+                <span class="pr-ctag">User flows</span>
+                <span class="pr-ctag">Client approval</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pr-step-center">
+          <div class="pr-step-circle" onclick="prClick(2)">
+            <div class="pr-step-arm"></div>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <span class="pr-step-label">Step 03</span>
+        </div>
+        <div class="pr-step-empty"></div>
+      </div>
+
+      <!-- ══ STEP 04 — RIGHT ══ -->
+      <div class="pr-step pr-even" data-idx="3">
+        <div class="pr-step-empty"></div>
+        <div class="pr-step-center">
+          <div class="pr-step-circle" onclick="prClick(3)">
+            <div class="pr-step-arm"></div>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <span class="pr-step-label">Step 04</span>
+        </div>
+        <div class="pr-step-card-col">
+          <div class="pr-card" onclick="prClick(3)">
+            <div class="pr-card-edge"></div>
+            <div class="pr-card-corner-tl"></div>
+            <div class="pr-card-corner-br"></div>
+            <div class="pr-card-glow"></div>
+            <div class="pr-card-ghost">04</div>
+            <div class="pr-card-inner">
+              <div class="pr-card-badge">Step 04</div>
+              <div class="pr-card-header">
+                <div class="pr-card-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+                <div class="pr-card-title">Build &amp;<br>Iterate</div>
+              </div>
+              <p class="pr-card-desc">Agile 2-week sprints with live feedback loops. You see working software regularly — not at the end of a long opaque process full of late surprises.</p>
+              <div class="pr-card-tags">
+                <span class="pr-ctag">Agile sprints</span>
+                <span class="pr-ctag">Live staging</span>
+                <span class="pr-ctag">Weekly demos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ STEP 05 — LEFT ══ -->
+      <div class="pr-step pr-odd" data-idx="4">
+        <div class="pr-step-card-col">
+          <div class="pr-card" onclick="prClick(4)">
+            <div class="pr-card-edge"></div>
+            <div class="pr-card-corner-tl"></div>
+            <div class="pr-card-corner-br"></div>
+            <div class="pr-card-glow"></div>
+            <div class="pr-card-ghost">05</div>
+            <div class="pr-card-inner">
+              <div class="pr-card-badge">Step 05</div>
+              <div class="pr-card-header">
+                <div class="pr-card-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                <div class="pr-card-title">Launch &amp;<br>Handoff</div>
+              </div>
+              <p class="pr-card-desc">Deployment, onboarding, and full documentation. We stay on for 30 days post-launch to iron out anything that surfaces in the real world — at no extra cost.</p>
+              <div class="pr-card-tags">
+                <span class="pr-ctag">Live deployment</span>
+                <span class="pr-ctag">Full docs</span>
+                <span class="pr-ctag">30-day support</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pr-step-center">
+          <div class="pr-step-circle" onclick="prClick(4)">
+            <div class="pr-step-arm"></div>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <span class="pr-step-label">Step 05</span>
+        </div>
+        <div class="pr-step-empty"></div>
+      </div>
+
+      <!-- ══ STEP 06 — RIGHT ══ -->
+      <div class="pr-step pr-even" data-idx="5">
+        <div class="pr-step-empty"></div>
+        <div class="pr-step-center">
+          <div class="pr-step-circle" onclick="prClick(5)">
+            <div class="pr-step-arm"></div>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <span class="pr-step-label">Step 06</span>
+        </div>
+        <div class="pr-step-card-col">
+          <div class="pr-card" onclick="prClick(5)">
+            <div class="pr-card-edge"></div>
+            <div class="pr-card-corner-tl"></div>
+            <div class="pr-card-corner-br"></div>
+            <div class="pr-card-glow"></div>
+            <div class="pr-card-ghost">06</div>
+            <div class="pr-card-inner">
+              <div class="pr-card-badge">Step 06</div>
+              <div class="pr-card-header">
+                <div class="pr-card-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                <div class="pr-card-title">Support &amp;<br>Growth</div>
+              </div>
+              <p class="pr-card-desc">Long-term partnerships built on trust. Ongoing maintenance, feature additions, and performance optimisation to keep your product competitive and growing.</p>
+              <div class="pr-card-tags">
+                <span class="pr-ctag">Retainer plans</span>
+                <span class="pr-ctag">New features</span>
+                <span class="pr-ctag">Priority support</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /pr-timeline -->
+  </div>
+</section>
+
+<!-- TECH -->
+<section id="tech" class="sec-sm">
+  <div class="wrap">
+    <div class="tc-hdr">
+      <div class="reveal">
+        <span class="eyebrow">Tech Stack</span>
+        <h2 class="h2" style="margin-top:12px;font-size:clamp(1.7rem,2.5vw,2.3rem)">Technologies We Build With</h2>
+      </div>
+      <p class="reveal d2" style="font-size:.9rem;color:var(--text-2);line-height:1.7;max-width:320px">Modern, battle-tested tools so your product is built to last and scale.</p>
+    </div>
+    <div class="tc-grid">
+      <div class="tc-col reveal d1"><div class="tc-ch"><div class="tc-ci">⚛️</div><div class="tc-ct">Frontend</div></div><div class="tc-items"><div class="tc-item">React / Next.js</div><div class="tc-item">Vue.js / Nuxt</div><div class="tc-item">Flutter</div><div class="tc-item">Tailwind CSS</div><div class="tc-item">TypeScript</div></div></div>
+      <div class="tc-col reveal d2"><div class="tc-ch"><div class="tc-ci">⚙️</div><div class="tc-ct">Backend</div></div><div class="tc-items"><div class="tc-item">Node.js / Express</div><div class="tc-item">Laravel / PHP</div><div class="tc-item">Django / Python</div><div class="tc-item">REST &amp; GraphQL</div><div class="tc-item">Firebase / Supabase</div></div></div>
+      <div class="tc-col reveal d3"><div class="tc-ch"><div class="tc-ci">🗃️</div><div class="tc-ct">Database</div></div><div class="tc-items"><div class="tc-item">PostgreSQL</div><div class="tc-item">MySQL / MariaDB</div><div class="tc-item">MongoDB</div><div class="tc-item">Redis</div><div class="tc-item">Elasticsearch</div></div></div>
+      <div class="tc-col reveal d4"><div class="tc-ch"><div class="tc-ci">☁️</div><div class="tc-ct">Cloud &amp; DevOps</div></div><div class="tc-items"><div class="tc-item">AWS / GCP</div><div class="tc-item">Docker / Kubernetes</div><div class="tc-item">GitHub Actions</div><div class="tc-item">Vercel / Netlify</div><div class="tc-item">Cloudflare</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="sec">
+  <div class="wrap">
+    <div class="ts-head reveal">
+      <span class="eyebrow">Client Reviews</span>
+      <h2 class="h2" style="text-align:center">What Our Clients <span class="accent">Say</span></h2>
+      <p class="lead" style="text-align:center">Real feedback from real clients. We let our work and our relationships speak for themselves.</p>
+    </div>
+    <div class="ts-grid">
+      <div class="ts-card reveal d1">
+        <div class="ts-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="ts-txt">"Optiverse completely transformed our e-commerce platform. Sales went up by 40% within two months of the new site going live. The team communicated at every stage and delivered exactly what was promised — on time."</p>
+        <div class="ts-foot"><div class="ts-av">RK</div><div><div class="ts-name">Rajesh Kumar Shrestha</div><div class="ts-role">CEO, Himalayan Exports Pvt. Ltd.</div></div></div>
+      </div>
+      <div class="ts-card reveal d2">
+        <div class="ts-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="ts-txt">"The mobile app they built has been a game changer. Beautifully designed, completely bug-free at launch, and the team stayed engaged throughout. I've worked with agencies that cost four times more and delivered far less."</p>
+        <div class="ts-foot"><div class="ts-av">SP</div><div><div class="ts-name">Sunita Pradhan</div><div class="ts-role">Founder, ConnectNepal</div></div></div>
+      </div>
+      <div class="ts-card reveal d3">
+        <div class="ts-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="ts-txt">"Their SEO work got us to the first page of Google in under 90 days — results our previous agency couldn't achieve in two years. Clear communication, transparent reporting, and outstanding ROI from month one."</p>
+        <div class="ts-foot"><div class="ts-av">AB</div><div><div class="ts-name">Aakash Bista</div><div class="ts-role">Head of Growth, TechHub Nepal</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="ct-wrap reveal">
+      <div class="ct-glow"></div>
+      <div class="ct-l">
+        <span class="eyebrow" style="color:var(--brand-l)">Get In Touch</span>
+        <h2 class="ct-h">Ready to Build<br/>Something <span>Great?</span></h2>
+        <p class="ct-d">Free 30-minute consultation. No pushy sales — just a real conversation about your project and whether we're the right fit.</p>
+        <div class="ct-infos">
+          <div class="ct-inf"><div class="ct-inf-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>Kathmandu, Nepal</div>
+          <div class="ct-inf"><div class="ct-inf-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5f373a3333301f302f2b36293a2d2c3a362b713c3032">[email&#160;protected]</a></div>
+          <div class="ct-inf"><div class="ct-inf-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg></div>+977 9800000000</div>
+          <div class="ct-inf"><div class="ct-inf-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>Response within 24 hours</div>
+        </div>
+      </div>
+      <div class="ct-form">
+        <div class="f-row">
+          <div class="f-field"><label class="f-label">Full Name *</label><input type="text" class="f-inp" placeholder="Aarav Sharma" id="fName"/></div>
+          <div class="f-field"><label class="f-label">Email Address *</label><input type="email" class="f-inp" placeholder="you@company.com" id="fEmail"/></div>
+        </div>
+        <div class="f-field"><label class="f-label">Phone Number</label><input type="tel" class="f-inp" placeholder="+977 9800000000" id="fPhone"/></div>
+        <div class="f-field">
+          <label class="f-label">Service Needed</label>
+          <select class="f-sel" id="fSvc">
+            <option value="" disabled selected>Select a service...</option>
+            <option>Web Development</option>
+            <option>Mobile App Development</option>
+            <option>UI / UX Design</option>
+            <option>Digital Marketing &amp; SEO</option>
+            <option>E-Commerce Solutions</option>
+            <option>Cloud &amp; DevOps</option>
+            <option>Other / Not sure yet</option>
+          </select>
+        </div>
+        <div class="f-field"><label class="f-label">Project Details *</label><textarea class="f-ta" placeholder="Tell us about your project, goals, and any specific requirements..." id="fMsg"></textarea></div>
+        <button class="f-btn" id="fBtn" onclick="sendForm()">Send Message <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+        <p class="f-note">Your information is never shared. We respond within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="ft-main">
+      <div>
+        <a href="#" class="logo" style="color:rgba(255,255,255,.82)">
+          <div class="logo-icon"><svg viewBox="0 0 24 24" fill="none"><polygon points="12,2 21,7 21,17 12,22 3,17 3,7" stroke="white" stroke-width="1.8" fill="none" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.2" fill="white"/><circle cx="12" cy="3.8" r="1.1" fill="white" opacity=".75"/></svg></div>
+          <div>Optiverse IT <span class="logo-sub" style="color:rgba(255,255,255,.28)">Solution Pvt. Ltd.</span></div>
+        </a>
+        <p class="ft-desc">We help businesses across Nepal and beyond design, build, and grow their digital presence — with clarity and genuine craft.</p>
+        <div class="ft-contact">
+          <a href="/cdn-cgi/l/email-protection#e088858c8c8fa08f90948996859293858994ce838f8d"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span class="__cf_email__" data-cfemail="95fdf0f9f9fad5fae5e1fce3f0e7e6f0fce1bbf6faf8">[email&#160;protected]</span></a>
+          <a href="tel:+9779800000000"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+977 9800000000</a>
+          <a href="#"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Kathmandu, Nepal</a>
+        </div>
+      </div>
+      <div class="ft-col"><h5>Services</h5><ul><li><a href="#">Web Development</a></li><li><a href="#">Mobile Apps</a></li><li><a href="#">UI/UX Design</a></li><li><a href="#">Digital Marketing</a></li><li><a href="#">E-Commerce</a></li><li><a href="#">Cloud &amp; DevOps</a></li></ul></div>
+      <div class="ft-col"><h5>Company</h5><ul><li><a href="#">About Us</a></li><li><a href="#">Portfolio</a></li><li><a href="#">Blog</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div class="ft-col"><h5>Connect</h5><ul><li><a href="https://www.facebook.com/people/Optiverse-IT-Solution-Pvt-Ltd/61583595820792/" target="_blank">Facebook</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Instagram</a></li><li><a href="#">Twitter / X</a></li><li><a href="#">GitHub</a></li></ul></div>
+    </div>
+    <div class="ft-bottom">
+      <p class="ft-copy">&copy; 2025 Optiverse IT Solution Pvt. Ltd. All rights reserved. Kathmandu, Nepal.</p>
+      <div class="ft-socials">
+        <a href="https://www.facebook.com/people/Optiverse-IT-Solution-Pvt-Ltd/61583595820792/" target="_blank" class="soc">f</a>
+        <a href="#" class="soc">in</a>
+        <a href="#" class="soc">ig</a>
+        <a href="#" class="soc" style="font-size:11px">tw</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* Nav stuck + back-to-top */
+const nav=document.getElementById('nav'),btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('stuck',scrollY>50);
+  btt.classList.toggle('vis',scrollY>400);
+});
+
+/* Burger */
+const burger=document.getElementById('burger'),mobNav=document.getElementById('mobNav');
+burger.addEventListener('click',()=>{burger.classList.toggle('x');mobNav.classList.toggle('open')});
+function cm(){burger.classList.remove('x');mobNav.classList.remove('open')}
+
+/* Scroll reveal */
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.1,rootMargin:'0px 0px -36px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* Counter */
+const counters=[{id:'s1',t:150,s:'+'},{id:'s2',t:50,s:'+'},{id:'s3',t:5,s:'+'},{id:'s4',t:98,s:'%'}];
+let done=false;
+new IntersectionObserver(es=>{
+  if(es[0].isIntersecting&&!done){
+    done=true;
+    counters.forEach(({id,t,s})=>{
+      const el=document.getElementById(id);
+      let v=0;const step=t/55;
+      const ti=setInterval(()=>{v=Math.min(v+step,t);el.innerHTML=Math.round(v)+`<sup>${s}</sup>`;if(v>=t)clearInterval(ti)},18);
+    });
+  }
+},{threshold:.4}).observe(document.getElementById('stats'));
+
+/* Active nav */
+const secs=document.querySelectorAll('section[id]'),links=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(scrollY>=s.offsetTop-130)cur=s.id});
+  links.forEach(a=>{a.classList.remove('on');if(a.getAttribute('href')==='#'+cur)a.classList.add('on')});
+});
+
+/* ══ PROCESS: World-Class Timeline ══ */
+
+/* Particle canvas */
+(function(){
+  const cv = document.getElementById('prParticles');
+  if (!cv) return;
+  const cx = cv.getContext('2d');
+  let W, H, pts = [];
+  function resize(){
+    const s = document.getElementById('process');
+    W = cv.width = s.offsetWidth; H = cv.height = s.offsetHeight;
+  }
+  function mkP(){ return {
+    x:Math.random()*W, y:Math.random()*H,
+    r:Math.random()*.9+.2, vx:(Math.random()-.5)*.18, vy:(Math.random()-.5)*.18,
+    o:Math.random()*.22+.03, pulse:Math.random()*Math.PI*2
+  };}
+  function draw(){
+    cx.clearRect(0,0,W,H);
+    const t = Date.now()/1000;
+    pts.forEach(p=>{
+      p.x+=p.vx; p.y+=p.vy; p.pulse+=.018;
+      if(p.x<0)p.x=W; if(p.x>W)p.x=0;
+      if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+      const ao = p.o + Math.sin(p.pulse)*p.o*.4;
+      cx.beginPath(); cx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      cx.fillStyle=`rgba(22,163,74,${ao})`; cx.fill();
+    });
+    for(let i=0;i<pts.length;i++) for(let j=i+1;j<pts.length;j++){
+      const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y, d=Math.sqrt(dx*dx+dy*dy);
+      if(d<110){
+        cx.beginPath(); cx.moveTo(pts[i].x,pts[i].y); cx.lineTo(pts[j].x,pts[j].y);
+        cx.strokeStyle=`rgba(22,163,74,${.04*(1-d/110)})`; cx.lineWidth=.4; cx.stroke();
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize', resize);
+  resize(); pts = Array.from({length:70},mkP); draw();
+})();
+
+/* Mouse-follow glow */
+(function(){
+  const glow = document.getElementById('prMouseGlow');
+  const sec  = document.getElementById('process');
+  if (!glow||!sec) return;
+  sec.addEventListener('mousemove', e=>{
+    const r = sec.getBoundingClientRect();
+    glow.style.left = (e.clientX - r.left) + 'px';
+    glow.style.top  = (e.clientY - r.top)  + 'px';
+  });
+})();
+
+/* Spine scroll fill */
+const prSpineFill = document.getElementById('prSpineFill');
+function prUpdateSpine(){
+  const tl = document.getElementById('prTimeline');
+  if (!tl||!prSpineFill) return;
+  const r = tl.getBoundingClientRect(), wH = window.innerHeight;
+  prSpineFill.style.height = (Math.max(0,Math.min(1,(wH-r.top)/(r.height+wH*.45)))*100)+'%';
+}
+window.addEventListener('scroll', prUpdateSpine, {passive:true});
+prUpdateSpine();
+
+/* Scroll reveal — staggered */
+const prStepObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('pr-visible'); });
+},{threshold:.1, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.pr-step').forEach((s,i)=>{
+  s.style.transitionDelay = `${i*.09}s`;
+  prStepObs.observe(s);
+});
+
+/* Click OR scroll: activate card + circle states */
+let prActive = 0;
+function prClick(idx){
+  if(prActive === idx) return;
+  prActive = idx;
+  document.querySelectorAll('.pr-card').forEach((c,i)=>c.classList.toggle('active',i===idx));
+  document.querySelectorAll('.pr-step-circle').forEach((c,i)=>{
+    c.classList.remove('active','done');
+    if(i===idx) c.classList.add('active');
+    else if(i<idx) c.classList.add('done');
+  });
+}
+
+/* Auto-activate step on scroll — fires when center of step crosses mid-screen */
+const prScrollObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const idx = parseInt(e.target.getAttribute('data-idx'));
+      if(!isNaN(idx)) prClick(idx);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('.pr-step').forEach(s=> prScrollObs.observe(s));
+
+/* Enable tag transitions only after initial paint — prevents flash on load */
+setTimeout(()=>{
+  document.getElementById('prTimeline').classList.add('pr-tags-ready');
+}, 600);
+
+/* Form */
+function sendForm(){
+  const n=document.getElementById('fName').value.trim();
+  const e=document.getElementById('fEmail').value.trim();
+  const m=document.getElementById('fMsg').value.trim();
+  const btn=document.getElementById('fBtn');
+  if(!n||!e.includes('@')||!m){
+    btn.innerHTML='&nbsp;Please fill in all required fields';
+    btn.style.background='#666';
+    setTimeout(()=>{btn.innerHTML='Send Message <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';btn.style.background=''},2500);
+    return;
+  }
+  btn.innerHTML='&#10003; Sent! We\'ll be in touch shortly.';
+  btn.style.background='#22c55e';
+  setTimeout(()=>{
+    btn.innerHTML='Send Message <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
+    btn.style.background='';
+    ['fName','fEmail','fPhone','fMsg'].forEach(id=>{document.getElementById(id).value=''});
+    document.getElementById('fSvc').selectedIndex=0;
+  },3500);
+}
+
+/* Smooth anchor */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}});
+});
+</script>
+</body>
+</html>
